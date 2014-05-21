@@ -1,0 +1,14 @@
+/**
+* Created with jarvis-ide.
+* User: krustnic
+* Date: 2014-05-21
+* Time: 06:16 PM
+* To change this template use Tools | Templates.
+*/
+define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
+    var CmdsCollection = Backbone.Collection.extend({
+        model : CmdModel
+    });
+    
+    return CmdsCollection;
+});

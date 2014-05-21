@@ -5,7 +5,7 @@
 * Time: 07:05 AM
 * To change this template use Tools | Templates.
 */
-define( ["jarvis-ide-message"], function( PostMan ) {
+define( ["tools/jarvis-ide-message"], function( PostMan ) {
     return function() {
         var self = this;
                 
