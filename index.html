@@ -7,21 +7,48 @@
     
         require.config({    
             //urlArgs: "bust=" + (new Date()).getTime(),
-            baseUrl: "/src"            
+            baseUrl: "/src",
+            paths: {
+                "backbone"   : "//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min",
+                "underscore" : "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min",
+                "jquery"     : "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min"
+            },
+            shim : {
+                "backbone" : {
+                    deps : [ "underscore", "jquery" ],
+                    export : "_"
+                }
+            }
         });
         
         
         function init() {
-            require( ["jarvis-ide-parent"], function( JParent ) {
+            require( ["jarvis-ide-parent", "jquery"], function( JParent, $ ) {
                 var jparent = new JParent();
+                
+                jparent.on("ready", function( msg ) {
+                    console.log("IFrame ready!", msg);
+                });
 
-                jparent.loadTest( {} );            
+                $("#ide-clear").click( function() {
+                    jparent.clearTest( function() {
+                        alert("Parent get iframe callback, test cleared");
+                    } );                    
+                } );
+                
+                $("#ide-get").click( function() {
+                    jparent.getTest( function() {
+                        alert("Parent get iframe callback, test get");
+                    } );                    
+                } );
             });
         }
         
     </script>
 </head>
 <body>
+<button id="ide-clear">clear</button>
+<button id="ide-get">get</button>
 <iframe id="jarvis-ide" onload="init();" style="width:100%;height:100%" src="/ide.html" frameborder="0"></iframe>
 </body>
 </html>

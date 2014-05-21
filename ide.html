@@ -3,16 +3,48 @@
 <head>
     <title></title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
     
         require.config({    
             //urlArgs: "bust=" + (new Date()).getTime(),
-            baseUrl: "/src"            
+            baseUrl: "/src",
+            paths: {
+                "backbone"   : "//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min",
+                "underscore" : "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min",
+                "jquery"     : "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min"
+            },
+            shim : {
+                "backbone" : {
+                    deps : [ "underscore", "jquery" ],
+                    export : "_"
+                }
+            }
         });
         
         require( ["jarvis-ide-child"], function( JChild ) {
-            var jchild = new JChild();                
+            var jchild = new JChild();     
+            
+            jchild.on("upload", function( msg, callback ) {
+                console.log("Child event: ", msg);                
+                
+                callback( {} );
+            });
+            
+            jchild.on("clear", function( msg, callback ) {
+                console.log("Child event: ", msg);    
+                
+                alert("IFrame cleared test");
+                
+                callback( {} );
+            });
+            
+            jchild.on("get", function( msg, callback ) {
+                console.log("Child event: ", msg);                
+                
+                callback( {} );
+            });
+            
+            jchild.ready();
         });
         
     </script>

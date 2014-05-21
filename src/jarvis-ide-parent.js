@@ -14,22 +14,28 @@ define( ["jarvis-ide-message"], function( PostMan ) {
                        
             self.postman = new PostMan( iframeElId );
             
-            window.onmessage = function(e) {
-                console.log( "Parent get message: ", e.data );
-                /*
-                if (e.data == 'hello') {
-                    alert('It works!');
-                }
-                */
-            };
-        }             
-        
-        this.loadTest = function( testJson ) {
-            self.postman.sendMessage( "load", testJson );   
+            console.log("Postman: ", self.postman);  
         }
         
-        this.test = function() {
-            //alert("Parent: it is a live!");
+        // Proxy to postman event queue
+        this.on = function() {
+            self.postman.on.apply( self.postman, arguments );
+        }
+        
+        this.trigger = function() {
+            self.postman.trigger.apply( self.postman, arguments );
+        }
+        
+        this.uploadTest = function( testJson, callback ) {
+            self.postman.sendMessage( "upload", testJson, callback );   
+        }
+        
+        this.clearTest = function( callback ) {
+            self.postman.sendMessage( "clear", {}, callback );   
+        }
+        
+        this.getTest = function( callback ) {
+            self.postman.sendMessage( "get", {}, callback );   
         }
         
         this.init();

@@ -10,22 +10,20 @@ define( ["jarvis-ide-message"], function( PostMan ) {
         var self = this;
                 
         this.init = function() {                       
-            self.postman = new PostMan();
-            
-            window.onmessage = function(e) {
-                console.log( "Child get message: ", e.data );
-                /*
-                if (e.data == 'hello') {
-                    alert('It works!');
-                }
-                */
-            };
-            
-            self.test();
+            self.postman = new PostMan();            
         }
         
-        this.test = function() {
-            self.postman.sendMessage("test", {});
+        // Proxy to postman event queue
+        this.on = function() {
+            self.postman.on.apply( self.postman, arguments );
+        }
+        
+        this.trigger = function() {
+            self.postman.trigger.apply( self.postman, arguments );
+        }
+        
+        this.ready = function() {
+            self.postman.sendMessage("ready", {});
         }
         
         this.init();
