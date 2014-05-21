@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    
+        require.config({    
+            //urlArgs: "bust=" + (new Date()).getTime(),
+            baseUrl: "/src"            
+        });
+        
+        require( ["jarvis-ide-child"], function( JChild ) {
+            var jchild = new JChild();                
+        });
+        
+    </script>
+</head>
+<body>
+Jarvis IDE
+</body>
+</html>
