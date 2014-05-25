@@ -13,7 +13,9 @@ require.config({
         "backbone"   : "//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min",
         "underscore" : "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min",
         "jquery"     : "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min",
-        "text"       : "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text"
+        "jqueryui"   : "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min",
+        "text"       : "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text",
+        "bootstrap"  : "//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min"
     },
     shim : {
         "backbone" : {
@@ -23,6 +25,14 @@ require.config({
         
         "underscore" : {
             export : "_"
+        },
+        
+        "bootstrap" : {
+            deps : [ "jquery" ]
+        },
+        
+        "jqueryui" : {
+            deps : [ "jquery" ]
         }
     }
 });

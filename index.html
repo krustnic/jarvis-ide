@@ -29,10 +29,12 @@
                 var jparent = new JParent();
                 
                 jparent.on("ready", function( msg ) {
-                    console.log("IFrame ready!", msg);
-                    
-                    jparent.uploadTest( TEST_JSON );
+                    console.log("IFrame ready!", msg);                    
                 });
+                
+                $("#ide-open").click( function() {
+                    jparent.uploadTest( TEST_JSON );
+                } );
 
                 $("#ide-clear").click( function() {
                     jparent.clearTest( function() {
@@ -51,8 +53,31 @@
     </script>
 </head>
 <body>
-<button id="ide-clear">clear</button>
-<button id="ide-get">get</button>
-<iframe id="jarvis-ide" onload="init();" style="width:100%;height:100%" src="/ide.html" frameborder="0"></iframe>
+    <div style="background-color: rgb(179, 194, 255);padding: 7px;">
+        <button id="ide-open">open</button>
+        <button id="ide-clear">clear</button>
+        <button id="ide-get">get</button>
+        <div style="float:right">Parent page</div>
+    </div>
+    <br/>
+    
+    <div style="height:800px">
+        <iframe id="jarvis-ide" onload="init();" style="width:100%;height:100%" src="/ide.html" frameborder="0"></iframe>
+    </div>    
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

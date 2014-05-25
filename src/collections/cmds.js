@@ -7,7 +7,17 @@
 */
 define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
     var CmdsCollection = Backbone.Collection.extend({
-        model : CmdModel
+        model : CmdModel,
+        
+        // For sorting by postion
+        comparator: function( a, b ) {            
+            a = a.get( "position" );
+            b = b.get( "position" );
+            
+            return a > b ?  1
+                 : a < b ? -1
+                 :          0;
+        } 
     });
     
     return CmdsCollection;

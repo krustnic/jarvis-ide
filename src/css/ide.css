@@ -1,0 +1,54 @@
+/**//*
+    Document   : src/css/ide.css
+    Created on : 2014-05-23 04:42 PM
+    Author     : krustnic
+    Description:
+    Purpose of the stylesheet follows.
+    To change this template use Tools | Templates.
+*/
+
+#top-panel {
+    height: 40px;
+}
+
+#ide-version {
+    color : gray;
+}
+
+.ui-state-default {
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    margin-bottom: 5px;
+    /*height: 72px;*/
+}
+
+.ui-state-highlight {
+    height: 52px;
+    margin-bottom : 3px;
+    background-color: rgba(160, 197, 232, 0.72);
+}
+
+.dragger {
+    /*height: 60px;*/
+    width: 20px;
+    float: left;
+    /*background-color: rgb(228, 228, 228);*/
+    cursor: move;
+    
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 14px;
+}
+
+#cmds-list {
+    list-style-type: none;		
+}
+
+.command-body {
+    margin-left: 23px;
+}
+
+.command-property {
+    overflow: hidden;
+    height: 20px;
+}

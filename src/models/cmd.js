@@ -11,8 +11,10 @@ define( [ "backbone" ], function( Backbone ) {
             "id"       : 0,
             "action"   : "",
             "selector" : "",
-            "value"    : ""            
-        }
+            "value"    : "",
+            "position" : 0
+        }        
+         
     });
     
     return CmdModel;

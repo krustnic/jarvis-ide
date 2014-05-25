@@ -7,12 +7,23 @@
 */
 define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backbone, _, cmdTpl ) {
     var CmdView = Backbone.View.extend({
-        template : _.template( cmdTpl ),
+        tagName   : "li",
+        className : "ui-state-default",
+        template  : _.template( cmdTpl ),        
+        
+        events : {
+            "click [data-type=remove]" : "remove"
+        },
         
         render : function() {        
             this.$el.html( this.template( { data : this.model.toJSON() } ) );
             return this;
+        },
+        
+        remove : function() {            
+            this.model.trigger( "remove-model", this.model );
         }
+        
     });
     
     return CmdView;
