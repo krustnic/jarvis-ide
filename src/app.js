@@ -39,11 +39,13 @@ require.config({
 
 var app = app || {};
 
-require( [ "tools/jarvis-ide-child", "collections/cmds", "views/cmds-list" ], function( IDE, CmdsCollection, CmdsListView ) {
+require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "views/cmds-list", "views/edit" ], function( IDE, CmdsCollection, TopPanelView, CmdsListView, EditView ) {
     app.ide = new IDE();     
     
+    app.topPanelView = new TopPanelView();
     app.cmds    = new CmdsCollection();
     app.cmdList = new CmdsListView( app.cmds );
+    app.editView = new EditView();
 
     app.ide.on("upload", function( msg, callback ) {        
         var cmds = JSON.parse( msg )["codeBrowser"];        

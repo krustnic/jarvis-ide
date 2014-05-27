@@ -12,7 +12,8 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
         template  : _.template( cmdTpl ),        
         
         events : {
-            "click [data-type=remove]" : "remove"
+            "click [data-type=remove]" : "remove",
+            "click .command-body"      : "showEdit"
         },
         
         render : function() {        
@@ -22,6 +23,11 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
         
         remove : function() {            
             this.model.trigger( "remove-model", this.model );
+            return false;            
+        },
+        
+        showEdit : function() {
+            app.editView.show();
         }
         
     });
