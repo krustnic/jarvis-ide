@@ -63,9 +63,9 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     });
 
     app.ide.on("get", function( msg, callback ) {
-        app.test["codeBrowser"] = app.cmds.toJSON();        
+        //app.test["codeBrowser"] = app.cmds.toJSON();        
 
-        callback( app.test );
+        callback( app.cmds.toJSON() );
     });
 
     app.ide.ready();
