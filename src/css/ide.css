@@ -67,3 +67,13 @@
 #edit-top-panel {
     
 }
+
+#edit-view .col-md-12 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#edit-view .row {
+    margin-left: 0;
+    margin-right: 0;
+}
