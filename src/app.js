@@ -48,7 +48,9 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     app.editView = new EditView();
 
     app.ide.on("upload", function( msg, callback ) {        
-        var cmds = JSON.parse( msg )["codeBrowser"];        
+        app.test = JSON.parse( msg );
+        
+        var cmds = app.test["codeBrowser"];        
         app.cmds.reset( cmds );
 
         callback( {} );
@@ -61,9 +63,9 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     });
 
     app.ide.on("get", function( msg, callback ) {
-        console.log("Child event: ", msg);                
+        app.test["codeBrowser"] = app.cmds.toJSON();        
 
-        callback( {} );
+        callback( app.test );
     });
 
     app.ide.ready();

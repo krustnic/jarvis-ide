@@ -27,6 +27,7 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
         },
         
         showEdit : function() {
+            app.editView.setModel( this.model );
             app.editView.show();
         }
         

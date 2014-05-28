@@ -24,6 +24,7 @@ define( [ "backbone", "text!templates/top-panel.html" ], function( Backbone, top
         },
         
         addCommand : function() {
+            app.editView.setModel();
             app.editView.show();
         }
         

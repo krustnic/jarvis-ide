@@ -38,13 +38,13 @@
 
                 $("#ide-clear").click( function() {
                     jparent.clearTest( function() {
-                        alert("Parent get iframe callback, test cleared");
+                        
                     } );                    
                 } );
                 
                 $("#ide-get").click( function() {
-                    jparent.getTest( function() {
-                        alert("Parent get iframe callback, test get");
+                    jparent.getTest( function( test ) {
+                        console.log("GET TEST: ", test );
                     } );                    
                 } );
             });
