@@ -15,6 +15,20 @@
         </select>        
     </div>
 </div>
+<% if ( data["command"] == "assertEval" ) { %>
+<div class="row">
+    <div class="form-group col-md-12">
+        <label>Assert name</label>
+        <input data-eid="assert-name" class="form-control" value="<%= data['name'] %>" />
+    </div>
+</div>
+<div class="row">    
+    <div class="form-group col-md-12">
+        <label>Assert code (F11 - fullscreen)</label>
+		<textarea data-eid="codemirror" cols="30" rows="10"></textarea>
+    </div>
+</div>
+<% } else { %>
 <div class="row">
     <div class="form-group col-md-12">
         <label>Selector</label>
@@ -27,6 +41,7 @@
         <input data-eid="value" class="form-control" value="<%= data['value'] %>" />
     </div>
 </div>
+<% } %>
 <div class="row">
     <div class="form-group col-md-12">
         <% if ( data["id"] != undefined ) { %>

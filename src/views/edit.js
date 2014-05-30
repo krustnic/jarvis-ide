@@ -5,7 +5,18 @@
 * Time: 03:23 PM
 * To change this template use Tools | Templates.
 */
-define( [ "backbone", "models/cmd", "text!templates/edit.html" ], function( Backbone, CmdModel, editTpl ) {
+define( [ 
+    "backbone", 
+    "cm/codemirror", 
+    "models/cmd", 
+    "text!templates/edit.html", 
+    
+    "cm/mode/javascript/javascript",
+	"cm/addon/edit/matchbrackets",
+    "cm/addon/edit/closebrackets",
+    "cm/addon/display/fullscreen"
+], function( Backbone, CodeMirror, CmdModel, editTpl ) {
+        
     var EditView = Backbone.View.extend({
         el        : "#edit-view",        
         template  : _.template( editTpl ),
@@ -15,18 +26,48 @@ define( [ "backbone", "models/cmd", "text!templates/edit.html" ], function( Back
         events : {
             "click [data-type=hide]" : "hide",
             "click [data-eid=add-command]" : "addCommand",
-            "click [data-eid=update-command]" : "updateCommand"
+            "click [data-eid=update-command]" : "updateCommand",
+            "change [data-eid=actions-list]" : "changeCommand"
         },
         
-        initialize : function() {
-            this.render();                  
+        initialize : function() {            
+            this.render();                            
         },
         
         render : function() {
             console.log("Edit model: ", this.model );
-            this.$el.html( this.template({ data : this.model.toJSON() }) );
+            this.$el.html( this.template({ data : this.model.toJSON() }) );            
             
             this.$("[data-eid=actions-list]").val( this.model.get("action") || this.model.get("command") );
+            
+            if ( this.model.get("command") == "assertEval" ) {
+                this.initCodemirror();
+            }
+        },
+        
+        initCodemirror : function() {
+            this.codeMirror = CodeMirror(function(elt) {
+                this.$("[data-eid=codemirror]")[0].parentNode.replaceChild(elt, this.$("[data-eid=codemirror]")[0]);
+            }, {
+                value: "return true",
+                lineNumbers: true,                        
+                matchBrackets: true,
+                autoCloseBrackets: true,
+                extraKeys: {
+                    "Ctrl-Space": "autocomplete",
+                    "F11"       : function(cm) {
+                      cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                    },
+                    "Esc"       : function(cm) {
+                      if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                    }
+                }                
+            });
+        },
+        
+        changeCommand : function( e ) {                        
+            this.model.set( { "command" : $(e.currentTarget).val() } );
+            this.render();            
         },
         
         grub : function() {
@@ -64,6 +105,7 @@ define( [ "backbone", "models/cmd", "text!templates/edit.html" ], function( Back
         
         show : function() {            
             this.$el.show();
+            this.render();
         },
         
         hide : function() {

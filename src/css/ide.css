@@ -77,3 +77,8 @@
     margin-left: 0;
     margin-right: 0;
 }
+
+.CodeMirror {
+    height: 150px;
+    margin-bottom: 15px;
+}
