@@ -38,7 +38,8 @@ require.config({
         "jqueryui"      : "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min",
         "text"          : "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text",
         "bootstrap"     : "//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min",
-        "cm"            : "//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0"        
+        "cm"            : "//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0",
+        "acorn"         : "libs/acorn"
     },
     shim : {
         "backbone" : {

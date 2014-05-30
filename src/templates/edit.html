@@ -22,10 +22,15 @@
         <input data-eid="assert-name" class="form-control" value="<%= data['name'] %>" />
     </div>
 </div>
+<div class="row">
+    <div class="form-group col-md-12">
+        <div data-eid="error" style="display: none;" class="alert alert-danger"></div>
+    </div>
+</div>
 <div class="row">    
     <div class="form-group col-md-12">
         <label>Assert code (F11 - fullscreen)</label>
-		<textarea data-eid="codemirror" cols="30" rows="10"></textarea>
+		<textarea data-eid="codemirror" cols="30" rows="10"><%= data['value'] %></%></textarea>
     </div>
 </div>
 <% } else { %>
