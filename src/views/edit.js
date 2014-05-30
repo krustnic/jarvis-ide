@@ -68,6 +68,7 @@ define( [
         },
         
         changeCommand : function( e ) {                        
+            this.setModel();
             this.model.set( { "command" : $(e.currentTarget).val() } );
             this.render();            
         },
@@ -88,7 +89,7 @@ define( [
             return error;
         },
         
-        updateCommand : function() {
+        grub : function() {
             var action   = self.$("[data-eid=actions-list]").val();
             var selector = self.$("[data-eid=selector]").val();
             
@@ -101,7 +102,7 @@ define( [
                 if ( error != null ) {
                     this.$('[data-eid="error"]').text(error);
                     this.$('[data-eid="error"]').show();                    
-                    return;
+                    return false;
                 }
                 else {
                     this.$('[data-eid="error"]').hide();
@@ -113,9 +114,13 @@ define( [
             this.model.set("command" , action);
             this.model.set("selector", selector);
             this.model.set("value"   , value);
-            this.model.set("name"    , name);      
+            this.model.set("name"    , name);                            
             
-            this.hide();
+            return true;
+        },
+        
+        updateCommand : function() {
+            if ( this.grub() ) this.hide();
         },
         
         addCommand : function() {                        

@@ -7,17 +7,19 @@
 */
 
 // Patching define (for CodeMirror)
-(function() {
-    var replacePaths = {
-        "../../lib/codemirror" : "cm/codemirror"
+(function() {    
+    
+    if (typeof define != "function" || !define.amd) {        
+        return;
     }
     
 	var _define = define;
     define = function() {        
         if ( Object.prototype.toString.call( arguments[0] ) === '[object Array]' ) {
 			for( var i in arguments[0] ) {
-                if ( replacePaths[ arguments[0][i] ] != undefined ) {                    
-                    arguments[0][i] = replacePaths[ arguments[0][i] ];
+                var redefine = require.s.contexts._.config.redefine;
+                if ( redefine[ arguments[0][i] ] != undefined ) {                    
+                    arguments[0][i] = redefine[ arguments[0][i] ];
                 }
             }			            
         }
@@ -58,6 +60,9 @@ require.config({
         "jqueryui" : {
             deps : [ "jquery" ]
         }
+    },
+    redefine : {
+        "../../lib/codemirror" : "cm/codemirror"
     }
 });
 
