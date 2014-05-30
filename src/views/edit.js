@@ -34,8 +34,7 @@ define( [
             this.render();                            
         },
         
-        render : function() {
-            console.log("Edit model: ", this.model );
+        render : function() {            
             this.$el.html( this.template({ data : this.model.toJSON() }) );            
             
             this.$("[data-eid=actions-list]").val( this.model.get("action") || this.model.get("command") );
@@ -91,9 +90,7 @@ define( [
             this.model.set( "id", app.cmds.length );
             
             app.cmds.add( this.model );
-            this.hide();
-            
-            console.log("Collection: ", app.cmds);
+            this.hide();            
         },
         
         setModel : function( model ) {

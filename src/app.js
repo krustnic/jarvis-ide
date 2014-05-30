@@ -13,13 +13,10 @@
     }
     
 	var _define = define;
-    define = function() {
-        console.log("call require: ", arguments[0]);
-        
+    define = function() {        
         if ( Object.prototype.toString.call( arguments[0] ) === '[object Array]' ) {
 			for( var i in arguments[0] ) {
-                if ( replacePaths[ arguments[0][i] ] != undefined ) {
-                    console.log( "define replace: ", arguments[0][i], replacePaths[ arguments[0][i] ] );
+                if ( replacePaths[ arguments[0][i] ] != undefined ) {                    
                     arguments[0][i] = replacePaths[ arguments[0][i] ];
                 }
             }			            
