@@ -96,6 +96,13 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
 
         callback( app.test );
     });
+    
+    app.ide.on("add", function( msg, callback ) {
+        console.log("add: ", msg);        
+        app.cmds.addAction( msg );
+
+        callback( app.test );
+    });
 
     app.ide.ready();
 });

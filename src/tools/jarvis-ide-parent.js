@@ -38,6 +38,10 @@ define( ["tools/jarvis-ide-message"], function( PostMan ) {
             self.postman.sendMessage( "get", {}, callback );   
         }
         
+        this.send = function( command, data, callback ) {
+            self.postman.sendMessage( command, data, callback );   
+        }
+        
         this.init();
     };
 });

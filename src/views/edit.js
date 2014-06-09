@@ -67,9 +67,12 @@ define( [
             if ( initValue != "" ) this.codeMirror.setValue( initValue );
         },
         
-        changeCommand : function( e ) {                        
-            this.setModel();
-            this.model.set( { "command" : $(e.currentTarget).val() } );
+        changeCommand : function( e ) {      
+            var action = $(e.currentTarget).val();
+            $('[data-eid="raw-action"]').val("");
+            
+            this.setModel( this.model );
+            this.model.set( { "command" : action } );
             this.render();            
         },
         
@@ -90,7 +93,7 @@ define( [
         },
         
         grub : function() {
-            var action   = self.$("[data-eid=actions-list]").val();
+            var action   = $('[data-eid="raw-action"]').val() || self.$("[data-eid=actions-list]").val();
             var selector = self.$("[data-eid=selector]").val();
             
             var value    = self.$("[data-eid=value]").val();

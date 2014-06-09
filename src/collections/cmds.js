@@ -9,6 +9,11 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
     var CmdsCollection = Backbone.Collection.extend({
         model : CmdModel,
         
+        addAction : function( action ) {
+            action["id"] = this.length;
+            this.add( action );
+        },
+        
         // For sorting by postion
         comparator: function( a, b ) {            
             a = a.get( "position" );

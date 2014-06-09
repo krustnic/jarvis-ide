@@ -12,7 +12,16 @@
             <option value="change"     >change</option>
             <option value="assertEval" >assertEval</option>
             <option value="open"       >open</option>
+            <option value="wait"       >wait</option>
+            <option value="sendKeys"   >sendKeys</option>
+            <option value="type"       >type</option>
         </select>        
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        <label>Raw action (custom action name)</label>
+        <input data-eid="raw-action" class="form-control" value="<%= data['command'] %>" />
     </div>
 </div>
 <% if ( data["command"] == "assertEval" ) { %>
