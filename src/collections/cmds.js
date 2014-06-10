@@ -10,7 +10,7 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
         model : CmdModel,
         
         addAction : function( action ) {
-            action["id"] = this.length;
+            action["id"] = (new Date()).getTime() + this.length;
             this.add( action );
         },
         

@@ -37,9 +37,12 @@
                 } );
 
                 $("#ide-clear").click( function() {
+                    jparent.send("clear");
+                    /*
                     jparent.clearTest( function() {
                         
                     } );                    
+                    */
                 } );
                 
                 $("#ide-get").click( function() {

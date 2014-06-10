@@ -128,9 +128,8 @@ define( [
         
         addCommand : function() {                        
             this.grub();
-            this.model.set( "id", app.cmds.length );
             
-            app.cmds.add( this.model );
+            app.cmds.addAction( this.model.toJSON() );
             this.hide();            
         },
         
