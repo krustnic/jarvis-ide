@@ -68,9 +68,8 @@ define( ["backbone", "underscore"], function( Backbone, _ ) {
                 
                 self.trigger( e.data.name , e.data.data, function( result ) {
                     self.sendCallback( e.data.id, result );
-                } );
-                
-                console.log( "Postman get message: ", e.data );                
+                } );                
+                              
             };
         }      
                 

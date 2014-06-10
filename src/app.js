@@ -97,8 +97,7 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         callback( app.test );
     });
     
-    app.ide.on("add", function( msg, callback ) {
-        console.log("add: ", msg);        
+    app.ide.on("add", function( msg, callback ) {            
         app.cmds.addAction( msg );
 
         callback( app.test );

@@ -28,7 +28,7 @@ define( [
             "click [data-type=hide]" : "hide",
             "click [data-eid=add-command]" : "addCommand",
             "click [data-eid=update-command]" : "updateCommand",
-            "change [data-eid=actions-list]" : "changeCommand"
+            "change [data-eid=actions-list]" : "changeCommand"            
         },
         
         initialize : function() {            
@@ -138,7 +138,7 @@ define( [
             
             this.model = model;
             this.render();
-        },
+        },        
         
         show : function() {            
             this.$el.show();

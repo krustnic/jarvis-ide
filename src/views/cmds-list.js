@@ -3,6 +3,11 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
         
         el : "#cmds-list",
         
+        events : {
+            "mouseover [data-type=command]" : "overCommand",
+            "mouseout  [data-type=command]" : "outCommand"
+        },
+        
         initialize : function( cmdsCollection ) {
             this.cmds = cmdsCollection;
             this.listenTo( this.cmds, "change reset remove sort", this.render );
@@ -52,9 +57,24 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
                 position += 1;
             });
             
-            this.cmds.sort();
+            this.cmds.sort();           
             
-            console.log("Sort: ", this.cmds);
+        },
+        
+        overCommand : function( e ) {
+            var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
+            var command = this.cmds.get( commandId );
+            var selector = command.get("selector");
+            
+        	app.ide.send( "over", selector );
+        },
+        
+        outCommand : function( e ) {
+            var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
+            var command = this.cmds.get( commandId );
+            var selector = command.get("selector");
+            
+            app.ide.send( "out", selector );
         }
         
     }); 

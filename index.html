@@ -32,6 +32,14 @@
                     console.log("IFrame ready!", msg);                    
                 });
                 
+                jparent.on("over", function( selector ) {
+                    console.log("parent: over", selector); 
+                });
+                
+                jparent.on("out", function( selector ) {
+                    console.log("parent: out ", selector); 
+                });
+                
                 $("#ide-open").click( function() {
                     jparent.uploadTest( TEST_JSON );
                 } );

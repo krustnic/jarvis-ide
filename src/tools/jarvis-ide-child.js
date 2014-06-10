@@ -22,6 +22,10 @@ define( ["tools/jarvis-ide-message"], function( PostMan ) {
             self.postman.trigger.apply( self.postman, arguments );
         }
         
+        this.send = function( name, data ) {
+            self.postman.sendMessage(name, data);
+        }
+        
         this.ready = function() {
             self.postman.sendMessage("ready", {});
         }
