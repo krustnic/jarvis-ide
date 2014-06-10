@@ -4,8 +4,8 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
         el : "#cmds-list",
         
         events : {
-            "mouseover [data-type=command]" : "overCommand",
-            "mouseout  [data-type=command]" : "outCommand"
+            "mouseenter [data-type=command]"  : "enterCommand",
+            "mouseleave  [data-type=command]" : "leaveCommand"
         },
         
         initialize : function( cmdsCollection ) {
@@ -61,20 +61,20 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
             
         },
         
-        overCommand : function( e ) {
+        enterCommand : function( e ) {
             var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
             var command = this.cmds.get( commandId );
             var selector = command.get("selector");
             
-        	app.ide.send( "over", selector );
+        	app.ide.send( "enter", selector );
         },
         
-        outCommand : function( e ) {
+        leaveCommand : function( e ) {
             var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
             var command = this.cmds.get( commandId );
             var selector = command.get("selector");
             
-            app.ide.send( "out", selector );
+            app.ide.send( "leave", selector );
         }
         
     }); 

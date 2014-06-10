@@ -32,11 +32,11 @@
                     console.log("IFrame ready!", msg);                    
                 });
                 
-                jparent.on("over", function( selector ) {
+                jparent.on("enter", function( selector ) {
                     console.log("parent: over", selector); 
                 });
                 
-                jparent.on("out", function( selector ) {
+                jparent.on("leave", function( selector ) {
                     console.log("parent: out ", selector); 
                 });
                 
