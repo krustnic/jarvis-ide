@@ -92,6 +92,8 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     });
 
     app.ide.on("get", function( msg, callback ) {
+        if ( app.test == undefined ) app.test = {};        
+            
         app.test["codeBrowser"] = app.cmds.toJSON();        
 
         callback( app.test );
