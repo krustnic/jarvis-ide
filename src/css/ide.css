@@ -7,6 +7,24 @@
     To change this template use Tools | Templates.
 */
 
+.fa {
+    line-height: inherit;
+}
+
+[data-type="play"] {
+    display: none;
+}
+
+[data-type="command"]:hover [data-type="play"] {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.command-hover {
+    background-color: #EBF5FA;
+    cursor: pointer;
+}
+
 #top-panel {
     height: 40px;
 }

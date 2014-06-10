@@ -62,6 +62,8 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
         },
         
         enterCommand : function( e ) {
+            $(e.currentTarget).parent().addClass("command-hover");
+            
             var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
             var command = this.cmds.get( commandId );
             var selector = command.get("selector");
@@ -70,6 +72,8 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
         },
         
         leaveCommand : function( e ) {
+            $(e.currentTarget).parent().removeClass("command-hover");
+            
             var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
             var command = this.cmds.get( commandId );
             var selector = command.get("selector");

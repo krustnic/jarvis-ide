@@ -33,11 +33,15 @@
                 });
                 
                 jparent.on("enter", function( selector ) {
-                    console.log("parent: over", selector); 
+                    //console.log("parent: over", selector); 
                 });
                 
                 jparent.on("leave", function( selector ) {
-                    console.log("parent: out ", selector); 
+                    //console.log("parent: out ", selector); 
+                });
+                
+                jparent.on("play", function( cmd ) {
+                    console.log("parent: play ", cmd); 
                 });
                 
                 $("#ide-open").click( function() {
@@ -68,6 +72,8 @@
                     
                     jparent.send( "add", action );                    
                 } );
+                
+                
             });
         }
         

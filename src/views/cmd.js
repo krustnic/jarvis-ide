@@ -13,12 +13,18 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
         
         events : {
             "click [data-type=remove]" : "remove",
-            "click .command-body"      : "showEdit"
+            "click .command-body"      : "showEdit",
+            "click [data-type=play]"   : "play"
         },
         
         render : function() {        
             this.$el.html( this.template( { data : this.model.toJSON() } ) );
             return this;
+        },
+        
+        play : function() {
+            app.ide.send( "play", this.model.toJSON() );
+            return false;
         },
         
         remove : function() {            
