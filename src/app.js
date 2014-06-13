@@ -76,7 +76,10 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     app.cmdList = new CmdsListView( app.cmds );
     app.editView = new EditView();
 
-    app.ide.on("upload", function( msg, callback ) {        
+    app.ide.on("upload", function( msg, callback ) {     
+        
+        app.editView.hide();
+        
         app.test = JSON.parse( msg );
         
         var cmds = app.test["codeBrowser"];        
