@@ -147,6 +147,10 @@ define( [
         
         hide : function() {
             this.$el.hide();
+        },
+        
+        isVisible : function() {
+            return this.$el.is(":visible");
         }
         
     });

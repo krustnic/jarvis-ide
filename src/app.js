@@ -104,6 +104,15 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
 
         callback( app.test );
     });
+    
+    app.ide.on("get-current-cmd", function( msg, callback ) {            
+        var cmd = null;
+        if ( app.editView.isVisible() ) {
+            cmd = app.editView.model.toJSON();
+        }
+        
+        callback( cmd );
+    });
 
     app.ide.ready();
 });
