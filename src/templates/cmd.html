@@ -5,7 +5,9 @@
             <a target="_blank" href="https://jarvisjs.hackpad.com/Jarvis-IDE-Actions-zGBA8oe0neF"><%= data["command"] %></a>
             <div data-type="command-buttons" class="pull-right"><!--i data-type="play" class="fa fa-play"></i--><i data-type="remove" class="fa fa-times"></i></div>
         </div>
-        <% if ( data["command"] == "assertEval" ) { %>
+        <% if ( data["command"] == "change" || data["command"] == "type" ) { %>            
+            <div class='command-property'><%= data["value"] %></div>
+        <% } else if ( data["command"] == "assertEval" ) { %>
             <div class='command-property'><%= data["name"] %></div>
         <% } else { %>
             <div class='command-property'><%= data["selector"] %></div>

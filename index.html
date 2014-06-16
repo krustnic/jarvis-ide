@@ -26,7 +26,7 @@
         
         function init() {
             require( ["tools/jarvis-ide-parent", "jquery"], function( JParent, $ ) {
-                var jparent = new JParent();
+                window.jparent = new JParent();
                 
                 jparent.on("ready", function( msg ) {
                     console.log("IFrame ready!", msg);                    
@@ -65,9 +65,9 @@
                 
                 $("#ide-add").click( function() {
                     var action = {
-                        command : "click",
+                        command : "type",
                         selector : "div",
-                        value : ""                        
+                        value : "123"                        
                     }
                     
                     jparent.send( "add", action );                    

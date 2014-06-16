@@ -10,6 +10,17 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
         model : CmdModel,
         
         addAction : function( action ) {
+            if ( this.length != 0 ) {
+                var lastCmd = this.at( this.length - 1 );
+                if ( lastCmd.get("command") == "type" && action["command"] == "type" ) {
+                    if ( lastCmd.get("selector") == action["selector"] ) {
+                        lastCmd.set( "value", action["value"] );
+                        return;
+                    }
+                }
+            }
+            
+            // Else add new action
             action["id"] = (new Date()).getTime() + this.length;
             this.add( action );
         },
