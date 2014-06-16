@@ -7,6 +7,10 @@
     To change this template use Tools | Templates.
 */
 
+body {
+    margin: 5px;
+}
+
 .fa {
     line-height: inherit;
 }
