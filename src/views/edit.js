@@ -15,7 +15,8 @@ define( [
     "cm/mode/javascript/javascript",
 	"cm/addon/edit/matchbrackets",
     "cm/addon/edit/closebrackets",
-    "cm/addon/display/fullscreen"
+    "cm/addon/display/fullscreen",
+    "bootstrap"
 ], function( Backbone, CodeMirror, acorn, CmdModel, editTpl ) {
         
     var EditView = Backbone.View.extend({

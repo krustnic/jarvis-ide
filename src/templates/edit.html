@@ -53,7 +53,26 @@
 <div class="row">
     <div class="form-group col-md-12">
         <label>Value</label>
-        <input data-eid="value" class="form-control" value="<%= data['value'] %>" />
+        <div class="input-group">
+            <input data-eid="value" type="text" class="form-control" value="<%= data['value'] %>">
+            <div class="input-group-btn">   
+                <button type="button" class="btn btn-default" tabindex="-1">+</button>                
+            </div>
+            <div class="input-group-btn">                    
+                
+                <select class="form-control value-generator" style="width: 150px;">
+                    <option value=""              >""</option>
+                    <option value="date"          >date (dd.mm.yyyy)</option>
+                    <option value="unixtime"      >unix time</option>
+                    <option value="randomString"  >randomString</option>
+                    <option value="randomInteger" >randomInteger</option>
+                    <option value="randomFloat"   >randomFloat</option>                    
+                </select> 
+                
+            </div><!-- /btn-group -->
+          </div>
+        <!--label>Value</label>
+        <input data-eid="value" class="form-control" value="<%= data['value'] %>" /-->
     </div>
 </div>
 <% } %>

@@ -104,3 +104,7 @@ body {
     height: 150px;
     margin-bottom: 15px;
 }
+
+.value-generator {
+    width: 150px;
+}
