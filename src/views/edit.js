@@ -98,6 +98,7 @@ define( [
             var selector = self.$("[data-eid=selector]").val();
             
             var value    = self.$("[data-eid=value]").val();
+            var postfix  = self.$("[data-eid=postfix]").val();
             if ( action == "assertEval" ) {
                 value = this.codeMirror.getValue();
                 
@@ -118,6 +119,7 @@ define( [
             this.model.set("command" , action);
             this.model.set("selector", selector);
             this.model.set("value"   , value);
+            this.model.set("postfix" , postfix);
             this.model.set("name"    , name);                            
             
             return true;
