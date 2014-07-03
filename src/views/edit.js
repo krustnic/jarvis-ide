@@ -40,6 +40,8 @@ define( [
             this.$el.html( this.template({ data : this.model.toJSON() }) );            
             
             this.$("[data-eid=actions-list]").val( this.model.get("action") || this.model.get("command") );
+            this.$("[data-eid=prefix]").val( this.model.get("prefix") );
+            this.$("[data-eid=postfix]").val( this.model.get("postfix") );
             
             if ( this.model.get("command") == "assertEval" ) {
                 this.initCodemirror( this.model.get("value") );
