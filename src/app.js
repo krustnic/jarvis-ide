@@ -116,6 +116,22 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         
         callback( cmd );
     });
+    
+    app.ide.on("get-ide-size", function( msg, callback ) {            
+        var size = {};
+        size["width"] = $(document).width();
+        size["height"] = $(document).height();
+        
+        callback( size );
+    });    
+    
+    $(window).on("resize", function() {        
+        var size = {};
+        size["width"] = $(document).width();
+        size["height"] = $(document).height();
+        
+        app.ide.send( "resize", size );
+    });
 
     app.ide.ready();
 });
