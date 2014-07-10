@@ -83,7 +83,7 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         app.test = JSON.parse( msg );
         
         var cmds = app.test["codeBrowser"];        
-        app.cmds.reset( cmds );
+        app.cmds.reset( cmds );        
 
         callback( {} );
     });
