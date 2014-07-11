@@ -47,7 +47,11 @@
 <% } else { %>
 <div class="row">
     <div class="form-group col-md-12">
+        <% if ( data["iframepath"] == undefined || data["iframepath"].length == 0 ) { %>
         <label>Selector</label>
+        <% } else { %>
+        <label>Selector (iframe)</label>
+        <% } %>
         <input data-eid="selector" class="form-control" value="<%= data['selector'] %>" />
     </div>
 </div>
