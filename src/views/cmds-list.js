@@ -66,9 +66,9 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
             
             var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
             var command = this.cmds.get( commandId );
-            var selector = command.get("selector");
             
-        	app.ide.send( "enter", selector );
+            var cmd = command.toJSON();
+            app.ide.send( "enter", cmd );       	
         },
         
         leaveCommand : function( e ) {
@@ -76,9 +76,9 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
             
             var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
             var command = this.cmds.get( commandId );
-            var selector = command.get("selector");
             
-            app.ide.send( "leave", selector );
+            var cmd = command.toJSON();
+            app.ide.send( "leave", cmd );
         }
         
     }); 

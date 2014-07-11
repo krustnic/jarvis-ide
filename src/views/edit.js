@@ -29,30 +29,45 @@ define( [
             "click [data-type=hide]" : "hide",
             "click [data-eid=add-command]" : "addCommand",
             "click [data-eid=update-command]" : "updateCommand",
-            "change [data-eid=actions-list]" : "changeCommand"            
+            "change [data-eid=actions-list]" : "changeCommand",
+            "click [data-toggle=tab]" : "changeValueType"
         },
         
-        initialize : function() {            
+        initialize : function() {                                    
             this.render();                            
         },
         
-        render : function() {            
+        render : function() {  
+            console.log("render");
+            
             this.$el.html( this.template({ data : this.model.toJSON() }) );            
             
             this.$("[data-eid=actions-list]").val( this.model.get("action") || this.model.get("command") );
             this.$("[data-eid=prefix]").val( this.model.get("prefix") );
             this.$("[data-eid=postfix]").val( this.model.get("postfix") );
             
-            if ( this.model.get("command") == "assertEval" ) {
-                this.initCodemirror( this.model.get("value") );
-            }
+            // Always exist. As EvelValue or AssertEval
+            var self = this;
+            /*
+            setTimeout( function() {
+                self.initCodemirror( self.model.get("value") );
+            }, 250 );            
+            */
+            
+            self.initCodemirror( self.model.get("value") );
+        },
+        
+        changeValueType : function( e ) {            
+            var valueType = this.$(e.target).attr("data-value-type");            
+            this.model.set( "valueType", valueType );            
+            this.render();            
         },
         
         initCodemirror : function( initValue ) {
-            this.codeMirror = CodeMirror(function(elt) {
+            this.codeMirror = CodeMirror(function(elt) {                
                 this.$("[data-eid=codemirror]")[0].parentNode.replaceChild(elt, this.$("[data-eid=codemirror]")[0]);
             }, {
-                value: "return true",
+                value: initValue,
                 lineNumbers: true,                        
                 matchBrackets: true,
                 autoCloseBrackets: true,

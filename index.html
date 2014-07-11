@@ -32,8 +32,8 @@
                     console.log("IFrame ready!", msg);                    
                 });
                 
-                jparent.on("enter", function( selector ) {
-                    //console.log("parent: over", selector); 
+                jparent.on("enter", function( cmd ) {
+                    console.log("parent: over", cmd ); 
                 });
                 
                 jparent.on("leave", function( selector ) {
