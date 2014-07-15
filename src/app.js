@@ -120,7 +120,12 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         if ( cmd != null ) cmd = cmd.toJSON();
                 
         callback( cmd );
-    });    
+    });  
+    
+    app.ide.on("set-selected-at", function( msg, callback ) {            
+		app.cmds.setSelectedAt( msg )                        
+        callback();
+    });  
     
     app.ide.on("get-ide-size", function( msg, callback ) {            
         var size = {};

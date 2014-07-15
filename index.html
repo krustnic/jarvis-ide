@@ -85,6 +85,12 @@
                     } );
                 } );                
                 
+                $("#ide-set-selected-at").click( function() {
+                    jparent.send( "set-selected-at", 1, function() {
+                                               
+                    } );
+                } );  
+                
                 $("#ide-get-size").click( function() {
                     jparent.send( "get-ide-size", {}, function(size) {
                         console.log( "Size: ", size );                        
@@ -126,6 +132,7 @@
         <button id="ide-add">add</button>
         <button id="ide-get-current">get-current-cmd</button>
         <button id="ide-get-current-select-next">get-current-select-next</button>
+        <button id="ide-set-selected-at">set-selected-at</button>
         <button id="ide-get-size">get-size</button>
         <button id="ide-add-iframe-cmd">add iframe cmd</button>
         <div style="float:right">Parent page</div>

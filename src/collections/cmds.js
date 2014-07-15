@@ -62,6 +62,16 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
             this.get( id ).set( "isSelected", true );
         },
         
+        setSelectedAt : function( index ) {
+            if ( index > this.length - 1 ) return;
+            
+			this.each( function( cmd ) {
+				cmd.set("isSelected", false);
+            }, this );
+            
+            this.at( index ).set( "isSelected", true );
+        },
+        
         getSelected : function() {                       
             var selectedCmd = this.findWhere( { isSelected : true } );
             
