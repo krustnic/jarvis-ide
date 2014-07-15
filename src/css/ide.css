@@ -29,6 +29,11 @@ body {
     cursor: pointer;
 }
 
+.command-selected {
+    background-color: #EBF5FA;
+    cursor: pointer;
+}
+
 #top-panel {
     height: 40px;
 }

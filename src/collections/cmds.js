@@ -52,6 +52,40 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
                 
                 position += 1;
             }, this );
+        },
+                
+        setSelected : function( id ) {
+            this.each( function( cmd ) {
+				cmd.set("isSelected", false);
+            }, this );
+            
+            this.get( id ).set( "isSelected", true );
+        },
+        
+        getSelected : function() {                       
+            var selectedCmd = this.findWhere( { isSelected : true } );
+            
+            if ( selectedCmd == undefined ) selectedCmd = null;
+                        
+            if ( selectedCmd == null && this.length > 0 ) {
+                selectedCmd = this.at(0);
+                this.setSelected( selectedCmd.get("id") );
+            }
+            
+            return selectedCmd;
+        },
+        
+        getSelectedAndSelectNext : function() {
+            var selectedCmd = this.getSelected();
+            
+            if ( selectedCmd != null ) {
+                var index = this.indexOf( selectedCmd );
+                if ( index != this.length - 1 ) {
+                    this.setSelected( this.at( index + 1 ).get("id") );
+                }
+            }
+            
+            return selectedCmd;
         }
     });
     

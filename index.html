@@ -79,6 +79,12 @@
                     } );
                 } );
                 
+                $("#ide-get-current-select-next").click( function() {
+                    jparent.send( "get-current-select-next", {}, function(cmd) {
+                        console.log( "Current cmd: ", cmd );                        
+                    } );
+                } );                
+                
                 $("#ide-get-size").click( function() {
                     jparent.send( "get-ide-size", {}, function(size) {
                         console.log( "Size: ", size );                        
@@ -119,6 +125,7 @@
         <button id="ide-get">get</button>
         <button id="ide-add">add</button>
         <button id="ide-get-current">get-current-cmd</button>
+        <button id="ide-get-current-select-next">get-current-select-next</button>
         <button id="ide-get-size">get-size</button>
         <button id="ide-add-iframe-cmd">add iframe cmd</button>
         <div style="float:right">Parent page</div>

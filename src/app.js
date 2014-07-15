@@ -109,13 +109,18 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     });
     
     app.ide.on("get-current-cmd", function( msg, callback ) {            
-        var cmd = null;
-        if ( app.editView.isVisible() ) {
-            cmd = app.editView.model.toJSON();
-        }
-        
+        var cmd = app.cmds.getSelected();
+        if ( cmd != null ) cmd = cmd.toJSON();
+                
         callback( cmd );
     });
+    
+    app.ide.on("get-current-select-next", function( msg, callback ) {            
+        var cmd = app.cmds.getSelectedAndSelectNext();
+        if ( cmd != null ) cmd = cmd.toJSON();
+                
+        callback( cmd );
+    });    
     
     app.ide.on("get-ide-size", function( msg, callback ) {            
         var size = {};

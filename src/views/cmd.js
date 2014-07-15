@@ -11,14 +11,24 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
         className : "ui-state-default",
         template  : _.template( cmdTpl ),        
         
-        events : {
-            "click [data-type=remove]" : "remove",
-            "click .command-body"      : "showEdit",
+        events : {                        
+            "click .command-body"   : "select",
+            "click [data-type=remove]" : "remove",            
             "click [data-type=play]"   : "play"
+        },
+        
+        initialize : function() {
+            //this.listenTo( this.model, "change", this.render );
         },
         
         render : function() {        
             this.$el.html( this.template( { data : this.model.toJSON() } ) );
+            
+            // Set selection
+            if ( this.model.get("isSelected") ) {
+                this.$el.addClass("command-selected");
+            }
+            
             return this;
         },
         
@@ -32,9 +42,19 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
             return false;            
         },
         
-        showEdit : function() {
+        showEdit : function() {            
             app.editView.setModel( this.model );
             app.editView.show();
+        },
+        
+        select : function() {         
+            // If cmd already selected - go to editing mode
+            if ( this.model.get("isSelected") ) {
+                this.showEdit();
+            }
+            else {
+            	app.cmds.setSelected( this.model.get("id") );                
+            }            
         }
         
     });

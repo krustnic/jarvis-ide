@@ -37,9 +37,7 @@ define( [
             this.render();                            
         },
         
-        render : function() {  
-            console.log("render");
-            
+        render : function() {              
             this.$el.html( this.template({ data : this.model.toJSON() }) );            
             
             this.$("[data-eid=actions-list]").val( this.model.get("action") || this.model.get("command") );
