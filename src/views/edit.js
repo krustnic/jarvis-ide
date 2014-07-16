@@ -115,7 +115,7 @@ define( [
             var value    = self.$("[data-eid=value]").val();
             var postfix  = self.$("[data-eid=postfix]").val();
             var prefix  = self.$("[data-eid=prefix]").val();
-            if ( action == "assertEval" ) {
+            if ( action == "assertEval" || this.model.get("valueType") == "eval" ) {
                 value = this.codeMirror.getValue();
                 
                 var error = this.validate( value );
