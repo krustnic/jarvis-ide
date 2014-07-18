@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="form-group col-md-12">
+        <label>Value</label>
+        
+        <ul id="myTab" class="nav nav-tabs">
+            <% if ( data["valueType"] != "eval" ) { %>
+                <li class="active"><a href="[data-eid=plain-value-tab]" data-value-type="plain" data-toggle="tab">Plain</a></li>            
+                <li><a href="[data-eid=eval-value-tab]" data-value-type="eval" data-toggle="tab">Eval</a></li>            
+            <% } else { %>
+                <li><a href="[data-eid=plain-value-tab]" data-value-type="plain" data-toggle="tab">Plain</a></li>            
+                <li class="active"><a href="[data-eid=eval-value-tab]" data-value-type="eval" data-toggle="tab">Eval</a></li>            
+            <% } %>
+        </ul>
+
+        <div class="tab-content">
+            <% if ( data["valueType"] != "eval" ) { %>
+            <div class="tab-pane active" data-eid="plain-value-tab">
+            <% } else { %>
+            <div class="tab-pane" data-eid="plain-value-tab">
+            <% } %>
+                <br/>
+                <div class="input-group">            
+                    <div class="input-group-btn">                    
+
+                        <select data-eid="prefix" class="form-control value-generator" style="width: 150px;">
+                            <option value=""              >""</option>
+                            <option value="date"          >date (dd.mm.yyyy)</option>
+                            <option value="unixtime"      >unix time</option>
+                            <option value="randomString"  >randomString</option>
+                            <option value="randomInteger" >randomInteger</option>
+                            <option value="randomFloat"   >randomFloat</option>                    
+                        </select> 
+
+                    </div>
+                    <div class="input-group-btn">   
+                        <button type="button" class="btn btn-default" tabindex="-1">+</button>                
+                    </div>
+
+                    <input data-eid="value" type="text" class="form-control" value="<%= data['value'] %>">
+
+                    <div class="input-group-btn">   
+                        <button type="button" class="btn btn-default" tabindex="-1">+</button>                
+                    </div>
+                    <div class="input-group-btn">                    
+
+                        <select data-eid="postfix" class="form-control value-generator" style="width: 150px;">
+                            <option value=""              >""</option>
+                            <option value="date"          >date (dd.mm.yyyy)</option>
+                            <option value="unixtime"      >unix time</option>
+                            <option value="randomString"  >randomString</option>
+                            <option value="randomInteger" >randomInteger</option>
+                            <option value="randomFloat"   >randomFloat</option>                    
+                        </select> 
+
+                    </div>
+                </div>
+                
+            </div>
+
+            <% if ( data["valueType"] != "eval" ) { %>
+            <br/>
+            <div class="tab-pane" data-eid="eval-value-tab">
+            <% } else { %>
+            <div class="tab-pane active" data-eid="eval-value-tab">
+            <% } %>            
+                
+            </div>            
+        </div>       
+        
+    </div>
+</div>

@@ -23,116 +23,16 @@
         </select>        
     </div>
 </div>
+
 <div class="row">
     <div class="form-group col-md-12">
         <label>Raw action (custom action name)</label>
         <input data-eid="raw-action" class="form-control" value="<%= data['command'] %>" />
     </div>
 </div>
-<% if ( data["command"] == "assertEval" ) { %>
-<div class="row">
-    <div class="form-group col-md-12">
-        <label>Assert name</label>
-        <input data-eid="assert-name" class="form-control" value="<%= data['name'] %>" />
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-md-12">
-        <div data-eid="error" style="display: none;" class="alert alert-danger"></div>
-    </div>
-</div>
-<div class="row">    
-    <div class="form-group col-md-12">
-        <label>Assert code (F11 - fullscreen)</label>
-		<textarea data-eid="codemirror" cols="30" rows="10"><%= data['value'] %></%></textarea>
-    </div>
-</div>
-<% } else { %>
-<div class="row">
-    <div class="form-group col-md-12">
-        <% if ( data["iframepath"] == undefined || data["iframepath"].length == 0 ) { %>
-        <label>Selector</label>
-        <% } else { %>
-        <label>Selector (iframe)</label>
-        <% } %>
-        <input data-eid="selector" class="form-control" value="<%= data['selector'] %>" />
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-md-12">
-        <label>Value</label>
-        
-        <ul id="myTab" class="nav nav-tabs">
-            <% if ( data["valueType"] != "eval" ) { %>
-                <li class="active"><a href="[data-eid=plain-value-tab]" data-value-type="plain" data-toggle="tab">Plain</a></li>            
-                <li><a href="[data-eid=eval-value-tab]" data-value-type="eval" data-toggle="tab">Eval</a></li>            
-            <% } else { %>
-                <li><a href="[data-eid=plain-value-tab]" data-value-type="plain" data-toggle="tab">Plain</a></li>            
-                <li class="active"><a href="[data-eid=eval-value-tab]" data-value-type="eval" data-toggle="tab">Eval</a></li>            
-            <% } %>
-        </ul>
 
-        <div class="tab-content">
-            <% if ( data["valueType"] != "eval" ) { %>
-            <div class="tab-pane active" data-eid="plain-value-tab">
-            <% } else { %>
-            <div class="tab-pane" data-eid="plain-value-tab">
-            <% } %>
-                <br/>
-                <div class="input-group">            
-                    <div class="input-group-btn">                    
+<div data-eid="action-properties"></div>
 
-                        <select data-eid="prefix" class="form-control value-generator" style="width: 150px;">
-                            <option value=""              >""</option>
-                            <option value="date"          >date (dd.mm.yyyy)</option>
-                            <option value="unixtime"      >unix time</option>
-                            <option value="randomString"  >randomString</option>
-                            <option value="randomInteger" >randomInteger</option>
-                            <option value="randomFloat"   >randomFloat</option>                    
-                        </select> 
-
-                    </div>
-                    <div class="input-group-btn">   
-                        <button type="button" class="btn btn-default" tabindex="-1">+</button>                
-                    </div>
-
-                    <input data-eid="value" type="text" class="form-control" value="<%= data['value'] %>">
-
-                    <div class="input-group-btn">   
-                        <button type="button" class="btn btn-default" tabindex="-1">+</button>                
-                    </div>
-                    <div class="input-group-btn">                    
-
-                        <select data-eid="postfix" class="form-control value-generator" style="width: 150px;">
-                            <option value=""              >""</option>
-                            <option value="date"          >date (dd.mm.yyyy)</option>
-                            <option value="unixtime"      >unix time</option>
-                            <option value="randomString"  >randomString</option>
-                            <option value="randomInteger" >randomInteger</option>
-                            <option value="randomFloat"   >randomFloat</option>                    
-                        </select> 
-
-                    </div>
-                </div>
-                
-            </div>
-
-            <% if ( data["valueType"] != "eval" ) { %>
-            <div class="tab-pane" data-eid="eval-value-tab">
-            <% } else { %>
-            <div class="tab-pane active" data-eid="eval-value-tab">
-            <% } %>            
-                <br/>
-                <textarea data-eid="codemirror" cols="30" rows="10"><%= data['value'] %></%></textarea>
-            </div>            
-        </div>       
-        
-    </div>
-</div>
-<% } %>
-    
-<hr/>
-    
 <div class="row">
     <div class="form-group col-md-12">
         <% if ( data["id"] != undefined ) { %>
