@@ -82,7 +82,7 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         
         app.test = JSON.parse( msg );
         
-        var cmds = app.test["codeBrowser"];        
+        var cmds = app.test["code_browser"];        
         app.cmds.reset( cmds );        
 
         callback( {} );
@@ -97,7 +97,7 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     app.ide.on("get", function( msg, callback ) {
         if ( app.test == undefined ) app.test = {};        
             
-        app.test["codeBrowser"] = app.cmds.toJSON();        
+        app.test["code_browser"] = app.cmds.toJSON();        
 
         callback( app.test );
     });
