@@ -48,7 +48,8 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
         updatePositions : function() {
             var position = 0;
             this.each( function( cmd ) {
-                cmd.set("position", position);
+                cmd.set("isSelected", false);
+                cmd.set("position"  , position);
                 
                 position += 1;
             }, this );

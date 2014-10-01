@@ -8,10 +8,11 @@
 define( [ "backbone" ], function( Backbone ) {
     var CmdModel = Backbone.Model.extend({
         defaults : {
-            "action"   : "",
-            "selector" : "",
-            "value"    : "",
-            "position" : 0
+            "action"     : "",
+            "selector"   : "",
+            "value"      : "",
+            "position"   : 0,
+            "isSelected" : false
         }        
          
     });
