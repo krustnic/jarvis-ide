@@ -38,7 +38,7 @@ require.config({
         "underscore"    : "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min",
         "jquery"        : "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min",
         "jqueryui"      : "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min",
-        "text"          : "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text",
+        "text"          : "libs/text",
         "bootstrap"     : "//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min",
         "cm"            : "//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0",
         "acorn"         : "libs/acorn"
@@ -63,7 +63,9 @@ require.config({
     },
     redefine : {
         "../../lib/codemirror" : "cm/codemirror"
-    }
+    },
+    name: "app",
+    out: "main-built.js"
 });
 
 var app = app || {};
