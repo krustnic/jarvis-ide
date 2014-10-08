@@ -63,9 +63,7 @@ require.config({
     },
     redefine : {
         "../../lib/codemirror" : "cm/codemirror"
-    },
-    name: "app",
-    out: "main-built.js"
+    }
 });
 
 var app = app || {};
