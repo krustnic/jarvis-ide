@@ -5,12 +5,15 @@
     <link rel="stylesheet" href="/src/tests/js/libs/mocha.css" />
     <script src="/src/tests/js/libs/mocha.js"></script>
     <script src="/src/tests/js/libs/chaijs.js"></script>
+    <script src="/src/tests/js/libs/sinon-chai.js"></script>
+    <script src="/src/tests/js/libs/sinon-1.10.3.js"></script>
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script>        
     
 </head>
-<body>
+<body>    
     <div id="mocha"></div>
+    <div id="fixtures"></div>
     
     <script>
     
@@ -18,16 +21,33 @@
             //urlArgs: "bust=" + (new Date()).getTime(),
             baseUrl: "/src",
             paths: {
-                "backbone"   : "//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min",
-                "underscore" : "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min",
-                "jquery"     : "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min"
+                "backbone"      : "//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min",
+                "underscore"    : "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min",
+                "jquery"        : "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min",
+                "jqueryui"      : "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min",
+                "text"          : "libs/text",
+                "bootstrap"     : "//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min",
+                "cm"            : "//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0",
+                "acorn"         : "libs/acorn"
             },
             shim : {
                 "backbone" : {
-                    deps : [ "underscore", "jquery" ],
+                    deps : [ "underscore", "jquery", "text" ],
+                    export : "Backbone"
+                },
+
+                "underscore" : {
                     export : "_"
+                },
+
+                "bootstrap" : {
+                    deps : [ "jquery" ]
+                },
+
+                "jqueryui" : {
+                    deps : [ "jquery" ]
                 }
-            }
+            },
         });
         
         mocha.setup( {
@@ -37,9 +57,12 @@
         var expect = chai.expect;
         
         require( [ 
-            "/src/tests/js/spec/models/cmd.spec.js",
-            "/src/tests/js/spec/collections/cmds.spec.js"
-        ], function() {               
+            "views/edit"
+            //"/src/tests/js/spec/models/cmd.spec.js",
+            //"/src/tests/js/spec/collections/cmds.spec.js",
+            //"/src/tests/js/spec/views/edit.spec.js"
+        ], function( edit ) {               
+            console.log("edit", edit);
             mocha.run();
         } )       
         

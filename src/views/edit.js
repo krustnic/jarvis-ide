@@ -27,6 +27,7 @@ define( [
         model : new CmdModel(),
         
         events : {
+            "click body"                      : "clickEvent"
             "click [data-type=hide]"          : "hide",
             "click [data-eid=add-command]"    : "addCommand",
             "click [data-eid=update-command]" : "updateCommand",
@@ -37,6 +38,11 @@ define( [
             this.listenTo( this.model, "change", this.render );
             this.render();                            
         },
+        
+        // For testing
+        clickEvent : function() {
+            this.trigger("click:view");
+        }
         
         actionsMap : {
             "click"		  : SelectorOnlyAction,
