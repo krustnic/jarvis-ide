@@ -24,7 +24,7 @@
         //var TEST_JSON = '{"id":"324","testId":"339","name":"S7 test 222","description":"","width":"1280","height":"1024","isPure":"0","codeBrowser":[{"command":"open","selector":"","value":"http://www.s7.ru/","context":"http://www.s7.ru/","id":"0"},{"command":"click","selector":"div header > div > div > div:nth-of-type(2) > div > form > div > button","value":"","context":"http://www.s7.ru/","id":"8"},{"command":"assertEval","selector":"","value":"return text() == Неверный логин/пароль","context":"","name":"Check auth error","id":"9"}],"codeCasper":"","versionDate":"2014-05-21 11:19:52","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"}';
                 
         function init() {
-            require( ["tools/jarvis-ide-parent", "jquery", "/src/tests/js/data/sample_test.js"], function( JParent, $, TEST_JSON ) {
+            require( ["tools/jarvis-ide-parent", "jquery", "src/tests/js/data/sample_test.js"], function( JParent, $, TEST_JSON ) {
                 TEST_JSON = JSON.stringify( TEST_JSON["last_version"] );                
                 
                 window.jparent = new JParent();
