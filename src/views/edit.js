@@ -6,6 +6,8 @@
 * To change this template use Tools | Templates.
 */
 
+"use strict";
+
 define( [ 
     "backbone", 
     "underscore",
@@ -27,7 +29,7 @@ define( [
         model : new CmdModel(),
         
         events : {
-            "click body"                      : "clickEvent"
+            "click"                           : "clickEvent",
             "click [data-type=hide]"          : "hide",
             "click [data-eid=add-command]"    : "addCommand",
             "click [data-eid=update-command]" : "updateCommand",
@@ -42,7 +44,7 @@ define( [
         // For testing
         clickEvent : function() {
             this.trigger("click:view");
-        }
+        },
         
         actionsMap : {
             "click"		  : SelectorOnlyAction,

@@ -17,6 +17,30 @@
     
     <script>
     
+        // Patching define (for CodeMirror)
+        (function() {    
+
+            if (typeof define != "function" || !define.amd) {        
+                return;
+            }
+
+            var _define = define;
+            define = function() {        
+                if ( Object.prototype.toString.call( arguments[0] ) === '[object Array]' ) {
+                    for( var i in arguments[0] ) {
+                        var redefine = require.s.contexts._.config.redefine;
+                        if ( redefine[ arguments[0][i] ] != undefined ) {                    
+                            arguments[0][i] = redefine[ arguments[0][i] ];
+                        }
+                    }			            
+                }
+
+                return _define.apply( this, arguments );
+            }
+
+            define.amd = _define.amd;    
+        })();
+
         require.config({    
             //urlArgs: "bust=" + (new Date()).getTime(),
             baseUrl: "/src",
@@ -48,6 +72,9 @@
                     deps : [ "jquery" ]
                 }
             },
+            redefine : {
+                "../../lib/codemirror" : "cm/codemirror"
+            }
         });
         
         mocha.setup( {
@@ -56,13 +83,11 @@
         
         var expect = chai.expect;
         
-        require( [ 
-            "views/edit"
-            //"/src/tests/js/spec/models/cmd.spec.js",
-            //"/src/tests/js/spec/collections/cmds.spec.js",
-            //"/src/tests/js/spec/views/edit.spec.js"
-        ], function( edit ) {               
-            console.log("edit", edit);
+        require( [             
+            "/src/tests/js/spec/models/cmd.spec.js",
+            "/src/tests/js/spec/collections/cmds.spec.js",
+            "/src/tests/js/spec/views/edit.spec.js"
+        ], function() {                           
             mocha.run();
         } )       
         
