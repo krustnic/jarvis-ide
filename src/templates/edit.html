@@ -16,6 +16,8 @@
             <option value="screenshot" >screenshot</option>
             <option value="open"       >open</option>
             <option value="wait"       >wait</option>
+            <option value="waitForSelector">waitForSelector</option>
+            <option value="waitFor"    >waitFor</option>
             <option value="sendKeys"   >sendKeys</option>            
             <option value="reload"     >reload page</option>
             <option value="assertEval" >assertEval</option>
@@ -25,7 +27,7 @@
 </div>
 
 <div class="row">
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-12" style="display:none;">
         <label>Raw action (custom action name)</label>
         <input data-eid="raw-action" class="form-control" value="<%= data['command'] %>" />
     </div>

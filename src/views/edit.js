@@ -15,12 +15,13 @@ define( [
     "views/actions/base",
     "views/actions/selector-only",
     "views/actions/value-only",
+    "views/actions/value-code-only",
     "views/actions/assert-eval",
     "models/cmd", 
     "text!templates/edit.html",     
     
     "bootstrap"
-], function( Backbone, _, EmptyAction, BaseAction, SelectorOnlyAction, ValueOnlyAction, AssertEvalAction, CmdModel, editTpl ) {
+], function( Backbone, _, EmptyAction, BaseAction, SelectorOnlyAction, ValueOnlyAction, ValueCodeOnlyAction, AssertEvalAction, CmdModel, editTpl ) {
         
     var EditView = Backbone.View.extend({
         el        : "#edit-view",        
@@ -54,6 +55,8 @@ define( [
             "screenshot"  : SelectorOnlyAction,
             "open"        : ValueOnlyAction,
             "wait"        : ValueOnlyAction,
+            "waitFor"         : ValueCodeOnlyAction,
+            "waitForSelector" : SelectorOnlyAction,
             "reload"      : ValueOnlyAction,
             "assertTitle" : ValueOnlyAction,
             "assertEval"  : AssertEvalAction            
