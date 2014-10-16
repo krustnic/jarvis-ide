@@ -6,8 +6,6 @@
 * To change this template use Tools | Templates.
 */
 
-"use strict";
-
 define( [ 
     "backbone", 
     "underscore",
@@ -22,7 +20,9 @@ define( [
     
     "bootstrap"
 ], function( Backbone, _, EmptyAction, BaseAction, SelectorOnlyAction, ValueOnlyAction, ValueCodeOnlyAction, AssertEvalAction, CmdModel, editTpl ) {
-        
+    
+    "use strict";
+    
     var EditView = Backbone.View.extend({
         el        : "#edit-view",        
         template  : _.template( editTpl ),

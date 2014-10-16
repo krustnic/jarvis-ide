@@ -73,7 +73,9 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     
     app.topPanelView = new TopPanelView();
     app.cmds    = new CmdsCollection();
-    app.cmdList = new CmdsListView( app.cmds );
+    app.cmdList = new CmdsListView({
+        cmds : app.cmds
+    });
     app.editView = new EditView();
 
     app.ide.on("upload", function( msg, callback ) {             

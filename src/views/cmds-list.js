@@ -1,22 +1,35 @@
 define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
+    
+    "use strict";
+    
     var CommandsListView = Backbone.View.extend({
         
         el : "#cmds-list",
         
         events : {
+            "click"                           : "clickEvent",
             "mouseenter [data-type=command]"  : "enterCommand",
             "mouseleave  [data-type=command]" : "leaveCommand"
         },
         
-        initialize : function( cmdsCollection ) {
-            this.cmds = cmdsCollection;
+        initialize : function( options ) {
+            var self = this;
+            
+            this.cmds = options.cmds;            
+                        
             this.listenTo( this.cmds, "change reset remove sort", this.render );
             this.listenTo( this.cmds, "remove-model", this.removeModel );
         
             this.render();
         },
         
+        // For testing
+        clickEvent : function() {
+            this.trigger("click:view");
+        },
+        
         render : function() {
+            
             this.$el.empty();
             
             this.cmds.each( function( cmd ) {
@@ -24,7 +37,7 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
                 this.$el.append( cmdView.render().$el );
             }, this );   
             
-            this.enableDrag();
+            this.enableDrag();            
         },
         
         enableDrag : function() {
@@ -40,7 +53,11 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
             this.$el.disableSelection();
         },
         
-        removeModel : function( model ) {
+        removeModel : function( model ) {            
+            
+            // When command is removed we should send 'leave' event to parent
+            this.leaveCommandById( model.get("id") );
+            
             console.log( "Remove", model );
             this.cmds.remove( model );
         },
@@ -75,7 +92,11 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
             $(e.currentTarget).parent().removeClass("command-hover");
             
             var commandId = $(e.currentTarget).find("[data-model-id]").attr("data-model-id");
-            var command = this.cmds.get( commandId );
+            this.leaveCommandById( commandId );
+        },
+        
+        leaveCommandById : function( id ) {            
+            var command = this.cmds.get( id );
             
             var cmd = command.toJSON();
             app.ide.send( "leave", cmd );

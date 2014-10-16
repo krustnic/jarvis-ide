@@ -13,7 +13,7 @@
 </head>
 <body>    
     <div id="mocha"></div>
-    <div id="fixtures"></div>
+    <div id="fixtures" style="display: none;"></div>
     
     <script>
     
@@ -86,7 +86,8 @@
         require( [             
             "/src/tests/js/spec/models/cmd.spec.js",
             "/src/tests/js/spec/collections/cmds.spec.js",
-            "/src/tests/js/spec/views/edit.spec.js"
+            "/src/tests/js/spec/views/edit.spec.js",
+            "/src/tests/js/spec/views/cmds-list.spec.js"
         ], function() {                           
             mocha.run();
         } )       
