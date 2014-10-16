@@ -139,6 +139,8 @@ define( [
         
         hide : function() {
             this.$el.hide();
+            
+            app.cmdList.$el.show();
         },
         
         isVisible : function() {

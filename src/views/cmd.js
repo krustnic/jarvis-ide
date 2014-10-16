@@ -42,7 +42,9 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
             return false;            
         },
         
-        showEdit : function() {            
+        showEdit : function() {   
+            app.cmdList.$el.hide();
+            
             app.editView.setModel( this.model );
             app.editView.show();
         },
