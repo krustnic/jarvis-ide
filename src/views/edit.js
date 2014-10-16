@@ -12,14 +12,15 @@ define( [
     "views/actions/empty",
     "views/actions/base",
     "views/actions/selector-only",
+    "views/actions/selector-plain-value",
     "views/actions/value-only",
-    "views/actions/value-code-only",
+    "views/actions/value-code-only",    
     "views/actions/assert-eval",
     "models/cmd", 
     "text!templates/edit.html",     
     
     "bootstrap"
-], function( Backbone, _, EmptyAction, BaseAction, SelectorOnlyAction, ValueOnlyAction, ValueCodeOnlyAction, AssertEvalAction, CmdModel, editTpl ) {
+], function( Backbone, _, EmptyAction, BaseAction, SelectorOnlyAction, SelectorPlainValueAction, ValueOnlyAction, ValueCodeOnlyAction, AssertEvalAction, CmdModel, editTpl ) {
     
     "use strict";
     
@@ -59,7 +60,8 @@ define( [
             "waitForSelector" : SelectorOnlyAction,
             "reload"      : ValueOnlyAction,
             "assertTitle" : ValueOnlyAction,
-            "assertEval"  : AssertEvalAction            
+            "assertEval"  : AssertEvalAction,
+            "assertCount" : SelectorPlainValueAction
         },
         
         getViewByName : function( name ) {
