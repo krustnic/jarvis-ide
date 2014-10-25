@@ -14,13 +14,28 @@ define( [
     "views/actions/selector-only",
     "views/actions/selector-plain-value",
     "views/actions/value-only",
+    "views/actions/value-plain",
     "views/actions/value-code-only",    
     "views/actions/assert-eval",
     "models/cmd", 
     "text!templates/edit.html",     
     
     "bootstrap"
-], function( Backbone, _, EmptyAction, BaseAction, SelectorOnlyAction, SelectorPlainValueAction, ValueOnlyAction, ValueCodeOnlyAction, AssertEvalAction, CmdModel, editTpl ) {
+], function( 
+    Backbone, 
+    _, 
+    EmptyAction, 
+    BaseAction, 
+    SelectorOnlyAction, 
+    SelectorPlainValueAction, 
+    ValueOnlyAction, 
+    ValuePlainAction, 
+    ValueCodeOnlyAction, 
+    AssertEvalAction, 
+    CmdModel, 
+    editTpl 
+    
+    ) {
     
     "use strict";
     
@@ -55,7 +70,7 @@ define( [
             "mousedown"   : SelectorOnlyAction,
             "screenshot"  : SelectorOnlyAction,
             "open"        : ValueOnlyAction,
-            "wait"        : ValueOnlyAction,
+            "wait"        : ValuePlainAction,
             "waitFor"         : ValueCodeOnlyAction,
             "waitForSelector" : SelectorOnlyAction,
             "reload"      : ValueOnlyAction,
