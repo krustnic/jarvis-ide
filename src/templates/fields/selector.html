@@ -5,6 +5,6 @@
         <% } else { %>
         <label>Selector (iframe)</label>
         <% } %>
-        <input data-eid="selector" class="form-control" value="<%= data['selector'] %>" />
+        <input data-eid="selector" class="form-control" value="<%= _.escape(data['selector']) %>" />
     </div>
 </div>
