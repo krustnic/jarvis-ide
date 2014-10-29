@@ -40,6 +40,7 @@ define( [
         },
         
         initCodemirror : function( initValue ) {
+            initValue += "";
             if ( initValue == undefined ) initValue = "";
             
             var self = this;

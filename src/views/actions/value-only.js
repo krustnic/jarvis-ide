@@ -26,6 +26,7 @@ define( [
         },
         
         render : function() {        
+            
             this.$el.html( this.template( { data : this.model.toJSON() } ) );    
             
             // Value

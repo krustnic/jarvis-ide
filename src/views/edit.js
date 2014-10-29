@@ -70,6 +70,7 @@ define( [
             "mousedown"   : SelectorOnlyAction,
             "screenshot"  : SelectorOnlyAction,
             "open"        : ValueOnlyAction,
+            "sendKeys"    : ValueOnlyAction,
             "wait"        : ValuePlainAction,
             "waitFor"         : ValueCodeOnlyAction,
             "waitForSelector" : SelectorOnlyAction,
@@ -92,11 +93,12 @@ define( [
     
             var actionName = this.model.get("command");
             
+            
             this.view = new (this.getViewByName( actionName ))({ model : this.model });                
     		this.$("[data-eid=action-properties]").append( this.view.render().$el );         
             
             // For additional initialization of inherit views (e. g. CodeMirror bug )
-            if ( this.view.init != undefined ) this.view.init();
+            if ( this.view.init != undefined ) this.view.init();            
         },
         
         changeCommand : function( e ) {      
