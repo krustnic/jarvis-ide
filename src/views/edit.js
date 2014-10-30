@@ -64,20 +64,20 @@ define( [
         },
         
         actionsMap : {
-            "click"		  : SelectorOnlyAction,
-            "dblclick"    : SelectorOnlyAction,
-            "mouseup"     : SelectorOnlyAction,
-            "mousedown"   : SelectorOnlyAction,
-            "screenshot"  : SelectorOnlyAction,
-            "open"        : ValueOnlyAction,
-            "sendKeys"    : ValueOnlyAction,
-            "wait"        : ValuePlainAction,
+            "click"		      : SelectorOnlyAction,
+            "dblclick"        : SelectorOnlyAction,
+            "mouseup"         : SelectorOnlyAction,
+            "mousedown"       : SelectorOnlyAction,
+            "screenshot"      : SelectorOnlyAction,
+            "open"            : ValueOnlyAction,
+            "sendKeys"        : ValueOnlyAction,
+            "wait"            : ValuePlainAction,
             "waitFor"         : ValueCodeOnlyAction,
             "waitForSelector" : SelectorOnlyAction,
-            "reload"      : ValueOnlyAction,
-            "assertTitle" : ValueOnlyAction,
-            "assertEval"  : AssertEvalAction,
-            "assertCount" : SelectorPlainValueAction
+            "reload"          : ValuePlainAction,
+            "assertTitle"     : ValueOnlyAction,
+            "assertEval"      : AssertEvalAction,
+            "assertCount"     : SelectorPlainValueAction
         },
         
         getViewByName : function( name ) {

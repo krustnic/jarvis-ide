@@ -91,6 +91,7 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
 
     app.ide.on("clear", function( msg, callback ) {
         app.cmds.reset( [] );
+        app.test = {};
 
         callback( {} );
     });
