@@ -32,8 +32,8 @@ define( [
         render : function() {        
             this.$el.html( this.template( { data : this.model.toJSON() } ) );            
             
-            this.$("[data-eid=prefix]").val( this.model.get("prefix") );
-            this.$("[data-eid=postfix]").val( this.model.get("postfix") );
+            //this.$("[data-eid=prefix]").val( this.model.get("prefix") );
+            //this.$("[data-eid=postfix]").val( this.model.get("postfix") );
             
             this.jsEditorView = new JsEditorView( { model : this.model } );            
             this.$('[data-eid="eval-value-tab"]').append( this.jsEditorView.render().$el );            
@@ -57,8 +57,8 @@ define( [
             }
             else {
                 value   = this.$("[data-eid=value]").val();
-                postfix = this.$("[data-eid=postfix]").val();
-                prefix  = this.$("[data-eid=prefix]").val();
+                //postfix = this.$("[data-eid=postfix]").val();
+                //prefix  = this.$("[data-eid=prefix]").val();
             }
             
             return {

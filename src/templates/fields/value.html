@@ -19,41 +19,7 @@
             <div class="tab-pane" data-eid="plain-value-tab">
             <% } %>
                 <br/>
-                <div class="input-group">            
-                    <div class="input-group-btn">                    
-
-                        <select data-eid="prefix" class="form-control value-generator" style="width: 150px;">
-                            <option value=""              >""</option>
-                            <option value="date"          >date (dd.mm.yyyy)</option>
-                            <option value="unixtime"      >unix time</option>
-                            <option value="randomString"  >randomString</option>
-                            <option value="randomInteger" >randomInteger</option>
-                            <option value="randomFloat"   >randomFloat</option>                    
-                        </select> 
-
-                    </div>
-                    <div class="input-group-btn">   
-                        <button type="button" class="btn btn-default" tabindex="-1">+</button>                
-                    </div>
-
-                    <input data-eid="value" type="text" class="form-control" value="<%= _.escape( data['value'] ) %>">
-
-                    <div class="input-group-btn">   
-                        <button type="button" class="btn btn-default" tabindex="-1">+</button>                
-                    </div>
-                    <div class="input-group-btn">                    
-
-                        <select data-eid="postfix" class="form-control value-generator" style="width: 150px;">
-                            <option value=""              >""</option>
-                            <option value="date"          >date (dd.mm.yyyy)</option>
-                            <option value="unixtime"      >unix time</option>
-                            <option value="randomString"  >randomString</option>
-                            <option value="randomInteger" >randomInteger</option>
-                            <option value="randomFloat"   >randomFloat</option>                    
-                        </select> 
-
-                    </div>
-                </div>
+                <input data-eid="value" type="text" class="form-control" value="<%= _.escape( data['value'] ) %>">
                 
             </div>
 
