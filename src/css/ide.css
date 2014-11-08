@@ -9,6 +9,7 @@
 
 body {
     margin: 5px;
+    background-color: #f2f2f2;
 }
 
 .fa {
@@ -24,13 +25,21 @@ body {
     margin-right: 10px;
 }
 
+.nav-tabs>li.active>a {
+    background-color: #f2f2f2;
+}
+
+.nav-tabs>li.active>a:hover {
+    background-color: #f2f2f2;
+}
+
 .command-hover {
-    background-color: #EBF5FA;
+    background-color: #E4E4E4;
     cursor: pointer;
 }
 
 .command-selected {
-    background-color: #EBF5FA;
+    background-color: #E4E4E4;
     cursor: pointer;
 }
 
@@ -85,7 +94,7 @@ body {
     top: 0px;
     left: 0px;
     z-index: 10;
-    background-color: white;
+    background-color: #f2f2f2;
     width: 100%;
     height: 100%;    
     display: none;
