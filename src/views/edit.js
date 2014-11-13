@@ -98,7 +98,9 @@ define( [
     		this.$("[data-eid=action-properties]").append( this.view.render().$el );         
             
             // For additional initialization of inherit views (e. g. CodeMirror bug )
-            if ( this.view.init != undefined ) this.view.init();            
+            if ( this.view.init != undefined ) this.view.init();   
+            
+            app.ide.sendResize();
         },
         
         changeCommand : function( e ) {      
@@ -153,13 +155,15 @@ define( [
         
         show : function() {            
             this.$el.show();
-            this.render();
+            this.render();                        
         },
         
         hide : function() {
             this.$el.hide();
             
             app.cmdList.$el.show();
+            
+            app.ide.sendResize();
         },
         
         isVisible : function() {

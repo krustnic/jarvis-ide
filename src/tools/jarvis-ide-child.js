@@ -26,6 +26,15 @@ define( ["tools/jarvis-ide-message"], function( PostMan ) {
             self.postman.sendMessage(name, data);
         }
         
+        this.sendResize = function() {
+            var size = {};
+            
+            size["width"] = $(document).width();
+            size["height"] = $(document).height();
+            
+            this.send( "resize", size );
+        }
+        
         this.ready = function() {
             self.postman.sendMessage("ready", {});
         }

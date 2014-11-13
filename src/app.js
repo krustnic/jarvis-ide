@@ -137,12 +137,8 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         callback( size );
     });    
     
-    $(window).on("resize", function() {        
-        var size = {};
-        size["width"] = $(document).width();
-        size["height"] = $(document).height();
-        
-        app.ide.send( "resize", size );
+    $(window).on("resize", function() {                
+        app.ide.sendResize();
     });
 
     app.ide.ready();
