@@ -77,6 +77,10 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         cmds : app.cmds
     });
     app.editView = new EditView();
+    
+    Backbone.on("send-resize", function() {
+        app.ide.sendResize();        
+    });
 
     app.ide.on("upload", function( msg, callback ) {             
         app.editView.hide();

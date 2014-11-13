@@ -51,6 +51,27 @@ define(function(require) {
         it("setSelected. One selected at a time");
         it("getSelected");
         
+        it("'add' always add main command properties as strings", function() {
+            this.collection.reset([]);
+            
+            var action = {
+                command : "sendKeys",
+                selector : "div",
+                value : 13                        
+            }
+                    
+            this.collection.addAction( action );  
+            
+            this.collection.each(function( model ) {
+                var obj = model.toJSON();
+                for( var key in obj ) {
+                    if ( key in this.collection._propertiesShouldBeString ) {
+                        assert.typeOf( obj[key], "string" );
+                    }
+                }
+            }, this);
+        });
+        
     });
     
 });

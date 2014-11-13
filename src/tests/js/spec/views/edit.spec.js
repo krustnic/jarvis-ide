@@ -18,6 +18,13 @@ define( function( require ) {
             this.$fixture.appendTo( "#fixtures" );
             
             var EditView = require( "views/edit" );
+            
+            /*
+            window.app = {};
+            window.app.ide = {};
+            window.app.ide.sendResize = function() {};
+            */
+            
             this.view = new EditView( {
                 el : self.$fixture
             } );

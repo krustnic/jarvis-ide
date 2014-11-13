@@ -7,6 +7,14 @@
 */
 define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
     var CmdsCollection = Backbone.Collection.extend({
+        
+        _propertiesShouldBeString : [
+            "action", 
+            "command",
+            "selector",
+            "value"
+        ],
+        
         model : CmdModel,
         
         initialize : function() {
@@ -14,12 +22,18 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
         },
         
         addAction : function( action ) {
+            //Action propeties should be strings
+            for( var key in action ) {
+                if ( key in this._propertiesShouldBeString ) {
+                    action[key] += "";
+                }
+            }
             
             // Special case with "type" action realtime update
             if ( this.length != 0 ) {
                 var lastCmd = this.at( this.length - 1 );
                 if ( lastCmd.get("command") == "type" && action["command"] == "type" ) {
-                    if ( lastCmd.get("selector") == action["selector"] ) {
+                    if ( lastCmd.get("selector") == action["selector"] ) {                        
                         lastCmd.set( "value", action["value"] );
                         return;
                     }

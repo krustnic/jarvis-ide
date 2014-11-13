@@ -100,7 +100,7 @@ define( [
             // For additional initialization of inherit views (e. g. CodeMirror bug )
             if ( this.view.init != undefined ) this.view.init();   
             
-            app.ide.sendResize();
+            Backbone.trigger("send-resize");            
         },
         
         changeCommand : function( e ) {      
@@ -163,7 +163,7 @@ define( [
             
             app.cmdList.$el.show();
             
-            app.ide.sendResize();
+            Backbone.trigger("send-resize");    
         },
         
         isVisible : function() {

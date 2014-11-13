@@ -66,9 +66,9 @@
                 
                 $("#ide-add").click( function() {
                     var action = {
-                        command : "change",
+                        command : "sendKeys",
                         selector : "div",
-                        value : "123"                        
+                        value : 13                        
                     }
                     
                     jparent.send( "add", action );                    
