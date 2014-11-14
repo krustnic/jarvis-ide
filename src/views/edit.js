@@ -75,6 +75,7 @@ define( [
             "waitFor"         : ValueCodeOnlyAction,
             "waitForSelector" : SelectorOnlyAction,
             "reload"          : ValuePlainAction,
+            "eval"            : ValueCodeOnlyAction,
             "assertTitle"     : ValueOnlyAction,
             "assertEval"      : AssertEvalAction,
             "assertCount"     : SelectorPlainValueAction
