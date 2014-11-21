@@ -17,6 +17,8 @@ define( [
     "views/actions/value-plain",
     "views/actions/value-code-only",    
     "views/actions/assert-eval",
+    "views/actions/assert-title",
+    "views/actions/assert-count",
     "models/cmd", 
     "text!templates/edit.html",     
     
@@ -32,6 +34,8 @@ define( [
     ValuePlainAction, 
     ValueCodeOnlyAction, 
     AssertEvalAction, 
+    AssertTitleAction, 
+    AssertCountAction, 
     CmdModel, 
     editTpl 
     
@@ -76,9 +80,9 @@ define( [
             "waitForSelector" : SelectorOnlyAction,
             "reload"          : ValuePlainAction,
             "eval"            : ValueCodeOnlyAction,
-            "assertTitle"     : ValueOnlyAction,
+            "assertTitle"     : AssertTitleAction,
             "assertEval"      : AssertEvalAction,
-            "assertCount"     : SelectorPlainValueAction
+            "assertCount"     : AssertCountAction
         },
         
         getViewByName : function( name ) {
@@ -114,6 +118,8 @@ define( [
         },  
         
         grub : function() {
+            
+            
             var values = this.view.getValues();
             
             // If there is some errors in actions/fields then break
