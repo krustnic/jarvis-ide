@@ -5,7 +5,13 @@
 * Time: 06:01 PM
 * To change this template use Tools | Templates.
 */
-define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backbone, _, cmdTpl ) {
+define( [ 
+         "backbone", 
+         "underscore", 
+         "text!templates/cmd.html" 
+         
+    ], function( Backbone, _, cmdTpl ) {
+    
     var CmdView = Backbone.View.extend({
         tagName   : "li",
         className : "ui-state-default",
@@ -18,11 +24,23 @@ define( [ "backbone", "underscore", "text!templates/cmd.html" ], function( Backb
         },
         
         initialize : function() {
-            //this.listenTo( this.model, "change", this.render );
+            this.placeholders = {};
+            this.placeholders["action"]   = this.model.get("command");
+            this.placeholders["selector"] = this.model.get("selector");
+            this.placeholders["value"]    = this.model.get("value");
         },
         
-        render : function() {        
-            this.$el.html( this.template( { data : this.model.toJSON() } ) );
+        updatePlaceholders : function() {
+                        
+        },
+        
+        render : function() {
+            this.updatePlaceholders();
+            
+            this.$el.html( this.template( { 
+                data         : this.model.toJSON(),
+                placeholders : this.placeholders
+            } ) );
             
             // Set selection
             if ( this.model.get("isSelected") ) {

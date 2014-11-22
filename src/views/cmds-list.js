@@ -1,4 +1,20 @@
-define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
+define( [ 
+    "backbone", 
+    "views/cmd", 
+    "views/cmds/open",     
+    "views/cmds/sendkeys",     
+    "views/cmds/assert",   
+    
+    "jqueryui" 
+], function( 
+       
+    Backbone, 
+    CmdView, 
+    CmdOpenView,
+    CmdSendkeysView,
+    CmdAssertView 
+    
+    ) {
     
     "use strict";
     
@@ -28,13 +44,24 @@ define( [ "backbone", "views/cmd", "jqueryui" ], function( Backbone, CmdView ) {
             this.trigger("click:view");
         },
         
+        cmdsMap : {
+            "open"        : CmdOpenView,
+            "sendKeys"    : CmdSendkeysView,
+            "assertCount" : CmdAssertView,
+            "assertTitle" : CmdAssertView,
+            "assertEval"  : CmdAssertView
+        },
+        
         render : function() {
             
             this.$el.empty();
             
             this.cmds.each( function( cmd ) {
-                var cmdView = new CmdView( { model : cmd } );
+                var CmdClass = this.cmdsMap[ cmd.get("command") ] || CmdView;                
+                
+                var cmdView = new CmdClass( { model : cmd } );
                 this.$el.append( cmdView.render().$el );
+                
             }, this );   
             
             this.enableDrag();            

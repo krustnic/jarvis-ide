@@ -2,16 +2,12 @@
     <div class='dragger'><i class="fa fa-bars"></i></div>
     <div class='command-body' data-model-id='<%= data["id"] %>'>
         <div class='command-property'>
-            <a target="_blank" href="https://jarvisjs.hackpad.com/Jarvis-IDE-Actions-zGBA8oe0neF"><%= data["command"] %></a>
+            <a target="_blank" href="https://jarvisjs.hackpad.com/Jarvis-IDE-Actions-zGBA8oe0neF"><%= placeholders["action"] %></a> 
+            <span><%= placeholders["selector"] %></span>
             <div data-type="command-buttons" class="pull-right"><!--i data-type="play" class="fa fa-play"></i--><i data-type="remove" class="fa fa-times"></i></div>
         </div>
-        <% if ( data["command"] == "change" || data["command"] == "type" ) { %>            
-            <div class='command-property'><%= data["value"] %></div>
-        <% } else if ( data["command"] == "assertEval" ) { %>
-            <div class='command-property'><%= data["name"] %></div>
-        <% } else { %>
-            <div class='command-property'><%= data["selector"] %></div>
-        <% } %>
-        <!--div class='command-property'><%= data["value"] %></div-->
+            
+        <div class='command-property'><%= placeholders["value"] %></div>
+        
     </div>
 </div>
