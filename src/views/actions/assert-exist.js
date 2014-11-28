@@ -44,6 +44,8 @@ define( [
         },
         
         getValues : function() {
+            var values = {};
+            
             var name     = this.assertNameView.getValue();
             var selector = this.selectorView.getValue();
                         
