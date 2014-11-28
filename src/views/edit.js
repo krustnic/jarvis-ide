@@ -19,6 +19,8 @@ define( [
     "views/actions/assert-eval",
     "views/actions/assert-title",
     "views/actions/assert-count",
+    "views/actions/assert-selector-text-equals",
+    "views/actions/assert-exist",
     "models/cmd", 
     "text!templates/edit.html",     
     
@@ -36,6 +38,8 @@ define( [
     AssertEvalAction, 
     AssertTitleAction, 
     AssertCountAction, 
+    AssertSelectorTextEqualsAction, 
+    AssertExistAction, 
     CmdModel, 
     editTpl 
     
@@ -81,7 +85,10 @@ define( [
             "eval"            : ValueCodeOnlyAction,
             "assertTitle"     : AssertTitleAction,
             "assertEval"      : AssertEvalAction,
-            "assertCount"     : AssertCountAction
+            "assertCount"     : AssertCountAction,
+            "assertSelectorTextEquals" : AssertSelectorTextEqualsAction,
+            "assertSelectorHasText"    : AssertSelectorTextEqualsAction,
+            "assertExist"     : AssertExistAction
         },
         
         getViewByName : function( name ) {
