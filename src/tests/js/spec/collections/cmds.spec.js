@@ -72,6 +72,65 @@ define(function(require) {
             }, this);
         });
         
+        it("sequental 'type' and 'change' commands with same selector and value are collapsed", function() {
+            this.collection.reset([]);
+            
+            var typeAction = {
+                command : "type",
+                selector : "div",
+                value : 123,
+                valueType : "plain"
+            }
+            
+            var changeAction = {
+                command : "change",
+                selector : "div",
+                value : 123,
+                valueType : "plain"
+            }
+                    
+            this.collection.addAction( typeAction, true );  
+            this.collection.addAction( changeAction, true );  
+            
+            assert.equal( this.collection.at(0).get("command"), "type" );            
+            assert.equal( this.collection.size(), 1 );            
+            
+        });
+        
+        it("sequental 'type', 'sendKeys: ENTER', 'change' commands with same selector and value are collapsed", function() {
+            this.collection.reset([]);
+            
+            var typeAction = {
+                command : "type",
+                selector : "div",
+                value : 123,
+                valueType : "plain"
+            }
+            
+            var sendkeysAction = {
+                command : "sendKeys",
+                selector : "div",
+                value : 13,
+                valueType : "plain"
+            }
+            
+            var changeAction = {
+                command : "change",
+                selector : "div",
+                value : 123,
+                valueType : "plain"
+            }
+                    
+            this.collection.addAction( typeAction, true );  
+            this.collection.addAction( sendkeysAction, true );  
+            this.collection.addAction( changeAction, true );
+            
+            assert.equal( this.collection.at(0).get("command"), "type" );
+            assert.equal( this.collection.at(1).get("command"), "sendKeys" );            
+            assert.equal( this.collection.size(), 2 );            
+            
+        });
+        
     });
     
 });

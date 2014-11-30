@@ -21,7 +21,46 @@ define( [ "backbone", "models/cmd" ], function( Backbone, CmdModel ) {
 			this.listenTo( this, "reset", this.updatePositions );            
         },
         
-        addAction : function( action ) {
+        _compareWithActionMask : function( mask, action ) {
+            for( var key in mask ) {
+                if ( !(key in action) ) return false;
+                if ( action[key] != mask[key] ) return false;
+            }
+            
+            return true;
+        },
+        
+        addAction : function( action, isFromParent ) {             
+            //Smart action addition
+            if ( isFromParent && action["command"] == "change" ) {
+                if ( this.length != 0 ) {
+                    var lastCmd = this.at( this.length - 1 );
+                    
+                    var typeActionMask = {
+                        "command"      : "type",
+                        "selector"     : action["selector"],
+                        "value"        : action["value"]                        
+                    }
+                    
+                    if ( this._compareWithActionMask( typeActionMask, lastCmd.toJSON() ) ) {
+                        return;
+                    }
+                    
+                    if ( this.length > 1 ) {
+                        var lastTwoCmd = this.at( this.length - 2 );
+                        
+                        var enterActionMask = {
+                            "command"      : "sendKeys",                            
+                            "value"        : "13"                            
+                        }
+                        
+                        if ( this._compareWithActionMask( enterActionMask, lastCmd.toJSON() ) && this._compareWithActionMask( typeActionMask, lastTwoCmd.toJSON() ) ) {
+                            return;
+                        }
+                    }
+                }
+            }
+            
             //Action propeties should be strings
             for( var key in action ) {
                 if ( key in this._propertiesShouldBeString ) {

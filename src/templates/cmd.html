@@ -7,7 +7,15 @@
             <div data-type="command-buttons" class="pull-right"><!--i data-type="play" class="fa fa-play"></i--><i data-type="remove" class="fa fa-times"></i></div>
         </div>
             
-        <div class='command-property'><%= placeholders["value"] %></div>
+        <%
+        
+           if ( placeholders["value"].indexOf("http://") == 0 || placeholders["value"].indexOf("https://") == 0 ) {
+               placeholders["value"] = "<a target='_blank' href='" + placeholders["value"] + "'>" + placeholders["value"] + "</a>";
+           }
+           
+        %>
+                
+        <div class='command-property no-wrap'><%= placeholders["value"] %></div>
         
     </div>
 </div>

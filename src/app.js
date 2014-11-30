@@ -109,7 +109,7 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     });
     
     app.ide.on("add", function( msg, callback ) {            
-        app.cmds.addAction( msg );
+        app.cmds.addAction( msg, true );
 
         callback( app.test );
     });
