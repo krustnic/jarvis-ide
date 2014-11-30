@@ -1,13 +1,14 @@
-<div data-type="command">
+<div data-type="command" class="command">
 
 
-<div style="float: right; "> <!-- верх ур таблица -->
+<div class="top-level-tbl"> <!-- верх ур таблица -->
     
-  <div style="universal-col">
-    <div class='dragger'><i class="fa fa-bars"></i></div>
-  </div>
+
 
   <div  class='command-body universal-col' data-model-id='<%= data["id"] %>'> <!-- стр1 -->
+      
+    <div class='dragger'><i class="fa fa-bars"></i></div>
+      
     <div class='command-property'>
       <a target="_blank" href="https://jarvisjs.hackpad.com/Jarvis-IDE-Actions-zGBA8oe0neF#:h=<%= placeholders['action'] %>"><%= placeholders["action"] %></a> 
       <span><%= placeholders["selector"] %></span>
@@ -23,7 +24,7 @@
 <div class='command-property'><%= placeholders["value"] %></div>
 </div> <!-- end стр1 -->
 
-<div class="universal-col"> <!-- стр2 -->
+<div class="universal-col command-buttons"> <!-- стр2 -->
   <div data-type="command-buttons"><!--i data-type="play" class="fa fa-play"></i--><i data-type="remove" class="fa fa-times"></i></div>
 </div> <!-- end стр2 -->
 

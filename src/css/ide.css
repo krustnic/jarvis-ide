@@ -55,7 +55,7 @@ body {
     border: 1px solid #d3d3d3;
     padding: 5px;
     margin-bottom: 5px;
-    /*height: 72px;*/
+    height: 54px;
 }
 
 .ui-state-highlight {
@@ -66,14 +66,21 @@ body {
 
 .dragger {
     /*height: 60px;*/
-    width: 20px;
+    width: 12px;
     float: left;
     /*background-color: rgb(228, 228, 228);*/
     cursor: move;
-    
-    text-align: center;
-    vertical-align: middle;
+    margin-right: 5px;
+    /*text-align: center;
+    vertical-align: middle;*/
     padding-top: 11px;
+}
+
+.top-level-tbl{
+    width: 100%;
+    display: table;
+    position: relative;
+    table-layout: fixed;
 }
 
 #cmds-list {
@@ -81,7 +88,7 @@ body {
 }
 
 .command-body {
-    margin-left: 23px;
+    width: 95%;
 }
 
 .command-property {
@@ -133,7 +140,7 @@ body {
 }
 
 .command-buttons{
-    text-align: right;
+    width: 12px;
 }
 
 .col-command-buttons{
@@ -144,7 +151,7 @@ body {
     width:0 !important;
 }
 
-/* ---------- из bootstrap ------------------ */
+/* ---------- из bootstrap ------------------ 
  .col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12 {
         float:left
     }
@@ -359,6 +366,61 @@ body {
     }
 
 /* ---------- end из bootstrap ------------------ */
+
+.universal-col {
+    display: table-cell;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+   
+    display: none;
+}
+
+#edit-top-panel {
+    
+}
+
+#edit-view .col-md-12 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#edit-view .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.CodeMirror {
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.value-generator {
+    width: 150px;
+}
+
+.command-buttons{
+    text-align: right;
+}
+
+.col-command-buttons{
+    padding-right: 20px;
+}
+
+.set-no-width {
+    width:0 !important;
+}
+
+/*.command{
+    width: 100%;
+    display: table;
+    position: relative;
+    table-layout: fixed;
+}*/
 
 .universal-col {
     display: table-cell;
