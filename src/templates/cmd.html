@@ -9,19 +9,20 @@
       
     <div class='dragger'><i class="fa fa-bars"></i></div>
       
-    <div class='command-property'>
-      <a target="_blank" href="https://jarvisjs.hackpad.com/Jarvis-IDE-Actions-zGBA8oe0neF#:h=<%= placeholders['action'] %>"><%= placeholders["action"] %></a> 
-      <span><%= placeholders["selector"] %></span>
-      
-    </div>
+    <div style="padding-left: 32px;">
+        <div class='command-property'>
+          <a target="_blank" href="https://jarvisjs.hackpad.com/Jarvis-IDE-Actions-zGBA8oe0neF#:h=<%= placeholders['action'] %>"><%= placeholders["action"] %></a> 
+          <span><%= placeholders["selector"] %></span>      
+        </div>
 
-  <%
-    if ( placeholders["value"].indexOf("http://") == 0 || placeholders["value"].indexOf("https://") == 0 ) {
-      placeholders["value"] = "<a target='_blank' href='" + placeholders["value"] + "'>" + placeholders["value"] + "</a>";
-    }
-  %>
+      <%
+        if ( placeholders["value"].indexOf("http://") == 0 || placeholders["value"].indexOf("https://") == 0 ) {
+          placeholders["value"] = "<a target='_blank' href='" + placeholders["value"] + "'>" + placeholders["value"] + "</a>";
+        }
+      %>
 
-<div class='command-property'><%= placeholders["value"] %></div>
+        <div class='command-property'><%= placeholders["value"] %></div>
+    </div>  
 </div> <!-- end стр1 -->
 
 <div class="universal-col command-buttons"> <!-- стр2 -->
