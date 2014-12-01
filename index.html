@@ -112,6 +112,10 @@
                     console.log("Resize: ", size);                    
                 });
                 
+                jparent.on("find-selector-start", function() {
+                    console.log("FindSelectorStart");                    
+                });
+                
                 
             });
         }

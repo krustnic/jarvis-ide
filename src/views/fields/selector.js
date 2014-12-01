@@ -12,7 +12,7 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
         template : _.template( tpl ),
         
         events : {                        
-            
+            'click [data-eid="find-selector"]' : 'findSelector'
         },
         
         initialize : function() {
@@ -23,6 +23,10 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
             this.$el.html( this.template( { data : this.model.toJSON() } ) );            
             
             return this;
+        },
+        
+        findSelector : function() {
+            app.ide.send( "find-selector-start", {} );            
         },
         
         getValue : function() {
