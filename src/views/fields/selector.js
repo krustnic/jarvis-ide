@@ -31,6 +31,7 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
         setSelector : function( msg ) {
             // To prevent memory leak
             if ( !this.$el.is(":visible") ) {
+                this._stop();
                 this.stopListening();
                 return;
             }
