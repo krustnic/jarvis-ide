@@ -49,7 +49,10 @@ define( [
             "sendKeys"    : CmdSendkeysView,
             "assertCount" : CmdAssertView,
             "assertTitle" : CmdAssertView,
-            "assertEval"  : CmdAssertView
+            "assertEval"  : CmdAssertView,
+            "assertSelectorTextEquals" : CmdAssertView,
+            "assertSelectorHasText"    : CmdAssertView,
+            "assertExist"              : CmdAssertView            
         },
         
         render : function() {

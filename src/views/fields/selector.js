@@ -19,6 +19,7 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
             this.listenTo( Backbone, "set-selector", this.setSelector );
             
             this.isInspectorEnabled = false;
+            this.iframepath = [];
             this.render();
         },
         
@@ -37,8 +38,8 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
             }
             
             this.model.set("selector"  , msg["selector"]);
-            this.model.set("iframepath", msg["iframepath"]);
-            
+            this.model.set("iframepath", msg["iframepath"]);            
+                                    
             console.log("From selector: ", msg);
             
             this._stop();
