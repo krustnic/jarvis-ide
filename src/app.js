@@ -141,6 +141,10 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         callback( size );
     });    
     
+    app.ide.on("set-selector", function( msg, callback ) {            
+        console.log( "set-selector: ", msg );
+    });    
+    
     $(window).on("resize", function() {                
         app.ide.sendResize();
     });
