@@ -36,7 +36,7 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
             }
             
             this.model.set("selector"  , msg["selector"]);
-            this.model.set("iframepath", msg["iframepath"])
+            this.model.set("iframepath", msg["iframepath"]);
             
             console.log("From selector: ", msg);
             
