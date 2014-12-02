@@ -16,6 +16,7 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
         },
         
         initialize : function() {
+            this.isInspectorEnabled = false;
             this.render();
         },
         
@@ -26,7 +27,16 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
         },
         
         findSelector : function() {
-            app.ide.send( "find-selector-start", {} );            
+            if ( !this.isInspectorEnabled ) {
+                app.ide.send( "find-selector-start", {} );            
+                this.isInspectorEnabled = true;
+                console.log("findSelector: start");
+            }
+            else {
+                app.ide.send( "find-selector-stop", {} );            
+                this.isInspectorEnabled = false;
+                console.log("findSelector: stop");
+            }
         },
         
         getValue : function() {
