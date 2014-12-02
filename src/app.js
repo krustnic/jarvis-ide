@@ -142,7 +142,8 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
     });    
     
     app.ide.on("set-selector", function( msg, callback ) {            
-        console.log( "set-selector: ", msg );
+        //console.log( "set-selector: ", msg );
+        Backbone.trigger( "set-selector", msg );
     });    
     
     $(window).on("resize", function() {                

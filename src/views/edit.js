@@ -99,14 +99,14 @@ define( [
         },
         
         render : function() {              
-            this.$el.html( this.template({ data : this.model.toJSON() }) );   
+            this.$el.empty().html( this.template({ data : this.model.toJSON() }) );   
             this.$("[data-eid=actions-list]").val( this.model.get("action") || this.model.get("command") );
     
             var actionName = this.model.get("command");
             
             
             this.view = new (this.getViewByName( actionName ))({ model : this.model });                
-    		this.$("[data-eid=action-properties]").append( this.view.render().$el );         
+    		this.$("[data-eid=action-properties]").empty().append( this.view.render().$el );         
             
             // For additional initialization of inherit views (e. g. CodeMirror bug )
             if ( this.view.init != undefined ) this.view.init();   
@@ -121,7 +121,7 @@ define( [
             //this.setModel( this.model );
             this.model.set( { "command" : action } );
             this.render();            
-        },  
+        },
         
         grub : function() {
             

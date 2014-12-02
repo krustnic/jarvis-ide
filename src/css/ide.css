@@ -7,6 +7,10 @@ body {
     line-height: inherit;
 }
 
+.find-selector-process {
+    color: blue;
+}
+
 [data-type="play"] {
     display: none;
 }
