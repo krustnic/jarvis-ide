@@ -44,12 +44,13 @@ define( [
         },
         
         getValues : function() {
-            var selector = this.selectorView.getValue();
+            //var selector = this.selectorView.getValue();
             var values    = this.valueView.getValues();
             
             if ( values === false ) return false;
             
-            values["selector"] = selector;
+            _.extend( values, this.selectorView.getValues() );            
+            
             
         	return values;
     	}

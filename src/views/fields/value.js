@@ -21,12 +21,14 @@ define( [
         },
         
         initialize : function() {
+            this.valueType = this.model.get("valueType");
             this.render();
         },
         
-        changeValueType : function( e ) {            
-            var valueType = this.$(e.target).attr("data-value-type");            
-            this.model.set( "valueType", valueType );                      
+        changeValueType : function( e ) {   
+            var self = this;
+            this.valueType = this.$(e.target).attr("data-value-type");            
+            //this.model.set( "valueType", valueType );                                     
         },
         
         render : function() {        
@@ -50,7 +52,8 @@ define( [
             var postfix = this.model.get("postfix");
             var prefix  = this.model.get("prefix");
             
-            if ( this.model.get("valueType") == "eval" ) {
+            //if ( this.model.get("valueType") == "eval" ) {
+            if ( this.valueType == "eval" ) {
             	value = this.jsEditorView.getValue();
                 
                 if ( value === false ) return false;
@@ -62,9 +65,10 @@ define( [
             }
             
             return {
-                value   : value,
-                postfix : postfix,
-                prefix  : prefix
+                value     : value,
+                postfix   : postfix,
+                prefix    : prefix,
+                valueType : this.valueType
             }
         }
         

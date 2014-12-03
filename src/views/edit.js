@@ -123,8 +123,7 @@ define( [
             this.render();            
         },
         
-        grub : function() {
-            
+        grub : function() {            
             
             var values = this.view.getValues();
             

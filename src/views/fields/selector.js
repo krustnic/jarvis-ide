@@ -37,8 +37,11 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
                 return;
             }
             
-            this.model.set("selector"  , msg["selector"]);
-            this.model.set("iframepath", msg["iframepath"]);            
+            //this.model.set("selector"  , msg["selector"]);
+            //this.model.set("iframepath", msg["iframepath"]);            
+            
+            this.$("[data-eid=selector]").val( msg["selector"] );
+            this.iframepath = msg["iframepath"];
                                     
             console.log("From selector: ", msg);
             
@@ -70,8 +73,17 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
             }
         },
         
+        /*
         getValue : function() {
             return this.$("[data-eid=selector]").val();
+        },
+        */
+        
+        getValues : function() {
+            return {
+                "selector"   : this.$("[data-eid=selector]").val(),
+                "iframepath" : this.iframepath
+            } 
         }
         
     });

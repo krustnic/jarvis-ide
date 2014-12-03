@@ -50,13 +50,14 @@ define( [
         
         getValues : function() {
             var name     = this.assertNameView.getValue();
-            var selector = this.selectorView.getValue();
+            var selector = this.selectorView.getValues();
             var values   = this.valueView.getValues();
             
-            if ( values === false ) return false;
+            if ( values === false ) return false;            
             
-            values["selector"] = selector;
             values["name"]     = name;
+            
+            _.extend( values, selector );
             
         	return values;
     	}

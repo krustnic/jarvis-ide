@@ -35,6 +35,10 @@ define( [
             return this;
         },
         
+        refresh : function() {
+            this.codeMirror.refresh();                        
+        },
+        
         init : function() {
             this.initCodemirror( this.model.get("value") );
         },

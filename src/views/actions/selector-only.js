@@ -39,10 +39,11 @@ define( [
         },
         
         getValues : function() {
-            var values = {};
+            //var values = {};            
+            //var selector = this.selectorView.getValue();            
+            //values["selector"] = selector;
             
-            var selector = this.selectorView.getValue();            
-            values["selector"] = selector;
+            var values = this.selectorView.getValues();
             
         	return values;
     	}
