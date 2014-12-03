@@ -46,9 +46,20 @@ require.config({
     }
 });
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 var app = app || {};
 
+// Check where we are (extension or site)
+app.isExtension = getParameterByName( "home" ) == "site" ? false : true;
+
 require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "views/cmds-list", "views/edit" ], function( IDE, CmdsCollection, TopPanelView, CmdsListView, EditView ) {
+   
     app.ide = new IDE();     
     
     app.topPanelView = new TopPanelView();

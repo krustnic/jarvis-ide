@@ -130,7 +130,9 @@ define( [
             // If there is some errors in actions/fields then break
             if ( values === false ) return false;
             
-            values["command"] = $('[data-eid="raw-action"]').val() || self.$("[data-eid=actions-list]").val();            
+            values["command"] = $('[data-eid="raw-action"]').val() || self.$("[data-eid=actions-list]").val(); 
+            
+            this.model.clear();
             this.model.set( values );
             
             return true;           
@@ -138,6 +140,10 @@ define( [
         
         updateCommand : function() {
             if ( this.grub() ) {
+                this.model.set( "id", this.originModel.get("id") );
+                this.model.set( "position", this.originModel.get("position") );
+                
+                this.originModel.clear();
                 this.originModel.set( this.model.toJSON() );
             	this.hide();  
             } 

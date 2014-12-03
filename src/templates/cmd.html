@@ -16,7 +16,7 @@
         </div>
 
       <%
-        if ( placeholders["value"].indexOf("http://") == 0 || placeholders["value"].indexOf("https://") == 0 ) {
+        if ( placeholders["value"] && ( placeholders["value"].indexOf("http://") == 0 || placeholders["value"].indexOf("https://") == 0 ) ) {
           placeholders["value"] = "<a target='_blank' href='" + placeholders["value"] + "'>" + placeholders["value"] + "</a>";
         }
       %>
