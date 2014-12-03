@@ -6,30 +6,6 @@
 * To change this template use Tools | Templates.
 */
 
-// Patching define (for CodeMirror)
-(function() {    
-    
-    if (typeof define != "function" || !define.amd) {        
-        return;
-    }
-    
-	var _define = define;
-    define = function() {        
-        if ( Object.prototype.toString.call( arguments[0] ) === '[object Array]' ) {
-			for( var i in arguments[0] ) {
-                var redefine = require.s.contexts._.config.redefine;
-                if ( redefine[ arguments[0][i] ] != undefined ) {                    
-                    arguments[0][i] = redefine[ arguments[0][i] ];
-                }
-            }			            
-        }
-        
-        return _define.apply( this, arguments );
-    }
-
-    define.amd = _define.amd;    
-})();
-
 require.config({    
     //urlArgs: "bust=" + (new Date()).getTime(),
     baseUrl: "src",
@@ -40,8 +16,11 @@ require.config({
         "jqueryui"      : "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min",
         "text"          : "libs/text",
         "bootstrap"     : "//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min",
-        "cm"            : "//cdnjs.cloudflare.com/ajax/libs/codemirror/4.8.0",
-        "acorn"         : "libs/acorn"
+        //"cm"            : "//cdnjs.cloudflare.com/ajax/libs/codemirror/4.8.0",
+        "acorn"         : "libs/acorn",
+        //"ace"           : "//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3",        
+        //"ace-js"        : "//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript",
+        //"ace-chrome"    : "//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/theme-chrome"
     },
     shim : {
         "backbone" : {
@@ -59,10 +38,11 @@ require.config({
         
         "jqueryui" : {
             deps : [ "jquery" ]
+        },
+        
+        "ace" : {
+            export : "ace"
         }
-    },
-    redefine : {
-        "../../lib/codemirror" : "cm/codemirror"
     }
 });
 

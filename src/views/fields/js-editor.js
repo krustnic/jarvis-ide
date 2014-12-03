@@ -8,15 +8,13 @@
 define( [ 
     "backbone", 
     "underscore", 
-    "cm/codemirror",     
+    //"ace/ace",     
     "acorn",
-    "text!templates/fields/js-editor.html",
+    "text!templates/fields/js-editor.html"
     
-    "cm/mode/javascript/javascript",
-	"cm/addon/edit/matchbrackets",
-    "cm/addon/edit/closebrackets",
-    "cm/addon/display/fullscreen"
-], function( Backbone, _, CodeMirror, acorn, tpl ) {
+    //"ace-js",
+	//"ace-chrome"
+], function( Backbone, _, acorn, tpl ) {
     var view = Backbone.View.extend({   
         
         template : _.template( tpl ),
@@ -26,49 +24,22 @@ define( [
         },
         
         initialize : function() {
-            
+            console.log("ACE", ace);
         },
         
         render : function() {        
             this.$el.html( this.template( { data : this.model.toJSON() } ) );
                         
             return this;
-        },
+        },        
         
-        refresh : function() {
-            this.codeMirror.refresh();                        
-        },
         
         init : function() {
-            this.initCodemirror( this.model.get("value") );
-        },
-        
-        initCodemirror : function( initValue ) {
-            initValue += "";
-            if ( initValue == undefined ) initValue = "";
-            
-            var self = this;
-            
-            this.codeMirror = CodeMirror(function(elt) {                
-                self.$el.find("[data-eid=codemirror]")[0].parentNode.replaceChild(elt, self.$el.find("[data-eid=codemirror]")[0]);
-            }, {
-                value: initValue,
-                lineNumbers: true,                        
-                matchBrackets: true,
-                autoCloseBrackets: true,
-                extraKeys: {
-                    "Ctrl-Space": "autocomplete",
-                    "F11"       : function(cm) {
-                      cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-                    },
-                    "Esc"       : function(cm) {
-                      if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-                    }
-                }                
-            });
-            
-            if ( initValue != "" ) this.codeMirror.setValue( initValue );
-        },
+            this.editor = ace.edit("editor");
+            this.editor.setTheme("ace/theme/chrome");
+            this.editor.getSession().setMode("ace/mode/javascript");
+            this.editor.setValue = this.model.get("value");            
+        },        
         
         validate : function( codeText ) {
             var error = null;
@@ -87,7 +58,7 @@ define( [
         },
         
         getValue : function() {
-        	var value = this.codeMirror.getValue();
+        	var value = this.editor.getValue();
         	var error = this.validate( value );
                 
             if ( error != null ) {
