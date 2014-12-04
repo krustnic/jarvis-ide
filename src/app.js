@@ -65,7 +65,7 @@ var app = app || {};
 // Check where we are (extension or site)
 app.isExtension = getParameterByName( "home" ) == "site" ? false : true;
 
-if ( app.isExtension ) {
+if ( !app.isExtension ) {
     appendCSS();
 }
 
