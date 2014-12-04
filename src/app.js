@@ -53,10 +53,21 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+function appendCSS() {
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = '.only-extension { display: none !important; }';
+    document.getElementsByTagName('head')[0].appendChild(style);
+}
+
 var app = app || {};
 
 // Check where we are (extension or site)
 app.isExtension = getParameterByName( "home" ) == "site" ? false : true;
+
+if ( app.isExtension ) {
+    appendCSS();
+}
 
 require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "views/cmds-list", "views/edit" ], function( IDE, CmdsCollection, TopPanelView, CmdsListView, EditView ) {
    
