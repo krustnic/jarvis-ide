@@ -5,13 +5,6 @@
 * Time: 10:24 AM
 * To change this template use Tools | Templates.
 */
-/**
-* Created with jarvis-ide.
-* User: krustnic
-* Date: 2014-07-18
-* Time: 10:16 AM
-* To change this template use Tools | Templates.
-*/
 
 define( [ 
     "backbone", 

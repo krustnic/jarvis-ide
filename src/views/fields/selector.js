@@ -19,7 +19,7 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
             this.listenTo( Backbone, "set-selector", this.setSelector );
             
             this.isInspectorEnabled = false;
-            this.iframepath = [];
+            this.iframepath = this.model.get("iframepath") || [];
             this.render();
         },
         
