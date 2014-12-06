@@ -91,9 +91,13 @@ define( [
             "assertExist"     : AssertExistAction
         },
         
-        getViewByName : function( name ) {
+        getViewByName : function( name ) {            
+            
+            //this.$('[data-eid="raw-action"]').val( name );
+            
             if ( name == undefined ) return EmptyAction;
-            if ( name in this.actionsMap ) return this.actionsMap[ name ];
+            if ( this.actionsMap[name] != undefined ) return this.actionsMap[ name ];
+            //if ( name in this.actionsMap ) return this.actionsMap[ name ];
             
             return BaseAction;
         },

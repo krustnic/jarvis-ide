@@ -11,20 +11,25 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
         
         template : _.template( tpl ),
         
+        selectorModel : new Backbone.Model(),
+        
         events : {                        
             'click [data-eid="find-selector"]' : 'findSelector'
         },
         
         initialize : function() {            
             this.listenTo( Backbone, "set-selector", this.setSelector );
+            this.listenTo( this.selectorModel, "change", this.render );
+            
+            this.selectorModel.set( this.model.toJSON() );
             
             this.isInspectorEnabled = false;
-            this.iframepath = this.model.get("iframepath") || [];
+            //this.iframepath = this.model.get("iframepath") || [];
             this.render();
         },
         
         render : function() {        
-            this.$el.html( this.template( { data : this.model.toJSON() } ) );            
+            this.$el.html( this.template( { data : this.selectorModel.toJSON() } ) );            
             
             return this;
         },        
@@ -40,8 +45,11 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
             //this.model.set("selector"  , msg["selector"]);
             //this.model.set("iframepath", msg["iframepath"]);            
             
-            this.$("[data-eid=selector]").val( msg["selector"] );
-            this.iframepath = msg["iframepath"];
+            this.selectorModel.set( "selector", msg["selector"] );
+            this.selectorModel.set( "iframepath", msg["iframepath"] );
+            
+            //this.$("[data-eid=selector]").val( msg["selector"] );
+            //this.iframepath = msg["iframepath"];
                                     
             console.log("From selector: ", msg);
             
@@ -80,9 +88,16 @@ define( [ "backbone", "underscore", "text!templates/fields/selector.html" ], fun
         */
         
         getValues : function() {
+            
+            this.selectorModel.set( "selector", this.$("[data-eid=selector]").val() );
+            
             return {
+                "selector"   : this.selectorModel.get("selector"),
+                "iframepath" : this.selectorModel.get("iframepath")
+                /*
                 "selector"   : this.$("[data-eid=selector]").val(),
                 "iframepath" : this.iframepath
+                */
             } 
         }
         

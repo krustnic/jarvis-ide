@@ -94,7 +94,14 @@
                 $("#ide-set-selector").click( function() {
                     jparent.send( "set-selector", {
                         "command" : "set-selector",
-                        "selector" : "div"
+                        "selector" : "div",
+                        "iframepath" : [
+                            {
+                                host: "https://sheely-loudly.codio.io", 
+                                path: "/ide_dev.html",
+                                selector: "#jarvis-ide"
+                            }
+                        ]
                     }, function() {} );
                 } );
                 
