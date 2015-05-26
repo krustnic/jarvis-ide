@@ -35,9 +35,7 @@ define( [
             value   = this.$("[data-eid=value]").val();                
             
             return {
-                value   : value,
-                postfix : "",
-                prefix  : ""
+                url   : value
             }
         }
         
