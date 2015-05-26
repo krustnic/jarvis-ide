@@ -21,6 +21,7 @@ define( [
     "views/actions/assert-count",
     "views/actions/assert-selector-text-equals",
     "views/actions/assert-exist",
+    "views/actions/assert-url-value",
     "models/cmd", 
     "text!templates/edit.html",     
     
@@ -40,6 +41,7 @@ define( [
     AssertCountAction, 
     AssertSelectorTextEqualsAction, 
     AssertExistAction, 
+    AssertUrlValueAction, 
     CmdModel, 
     editTpl 
     
@@ -88,7 +90,8 @@ define( [
             "assertCount"     : AssertCountAction,
             "assertSelectorTextEquals" : AssertSelectorTextEqualsAction,
             "assertSelectorHasText"    : AssertSelectorTextEqualsAction,
-            "assertExist"     : AssertExistAction
+            "assertExist"     : AssertExistAction,
+            "assertHttpStatus": AssertUrlValueAction
         },
         
         getViewByName : function( name ) {            
@@ -120,7 +123,7 @@ define( [
         
         changeCommand : function( e ) {      
             var action = $(e.currentTarget).val();
-            $('[data-eid="raw-action"]').val("");
+            //$('[data-eid="raw-action"]').val("");
             
             //this.setModel( this.model );
             this.model.set( { "command" : action } );
