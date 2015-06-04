@@ -116,6 +116,12 @@ require( [ "tools/jarvis-ide-child", "collections/cmds", "views/top-panel", "vie
         callback( app.test );
     });
     
+    app.ide.on("new-command", function( msg, callback ) {            
+        app.topPanelView.addCommand();
+        
+        if ( callback ) callback();
+    });
+    
     app.ide.on("get-current-cmd", function( msg, callback ) {            
         var cmd = app.cmds.getSelected();
         if ( cmd != null ) cmd = cmd.toJSON();

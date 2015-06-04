@@ -122,6 +122,10 @@
                     jparent.send( "add", action );                    
                 } );
                 
+                $("#ide-new-command").click( function() {
+                    jparent.send( "new-command" );
+                } );
+                
                 jparent.on("resize", function( size ) {
                     console.log("Resize: ", size);                    
                 });
@@ -148,6 +152,7 @@
         <button id="ide-get-size">get-size</button>
         <button id="ide-add-iframe-cmd">add iframe cmd</button>
         <button id="ide-set-selector">set-selector</button>
+        <button id="ide-new-command">add-command</button>
         <div style="float:right">Parent page</div>
         <a href="src/tests/tests.html">Tests</a>
     </div>
