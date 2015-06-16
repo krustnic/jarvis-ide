@@ -89,6 +89,7 @@ define( [
             "assertEval"      : AssertEvalAction,
             "assertCount"     : AssertCountAction,
             "assertHasClass"  : AssertSelectorTextEqualsAction,
+            "assertHasNoClass"  : AssertSelectorTextEqualsAction,
             "assertSelectorTextEquals" : AssertSelectorTextEqualsAction,
             "assertSelectorHasText"    : AssertSelectorTextEqualsAction,
             "assertExist"     : AssertExistAction,
